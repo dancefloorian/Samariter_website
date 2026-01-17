@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Samariter</title>
+  <title>Samariterverein</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
+  <!-- HEADER -->
   <header class="header">
     <div class="container header__inner">
 
-      <!-- Logo (optional) -->
-      <img class="brand__logo" src="logo.png" alt="Samariter Logo" />
+      <!-- ✅ Logo JPEG container -->
+      <div class="logoBox">
+        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img">
+      </div>
 
-      <!-- Navigation buttons -->
+      <!-- Menu buttons -->
       <nav class="nav">
         <a class="navBtn" href="index.html">Home</a>
         <a class="navBtn" href="vorstand.html">Vorstand</a>
@@ -27,6 +31,22 @@
 
     </div>
   </header>
+
+  <!-- ✅ Full page TEAM JPEG container -->
+  <main>
+    <section class="teamHero">
+      <img src="team.jpeg" alt="Team Foto" class="teamHero__img">
+
+      <!-- Optional overlay for better text visibility -->
+      <div class="teamHero__overlay"></div>
+
+      <!-- Center text -->
+      <div class="teamHero__content">
+        <h1>Samariterverein Sils im Domleschg</h1>
+        <p>Helfen, wenn es zählt — Kurse, Sanitätsdienst und Gemeinschaft.</p>
+      </div>
+    </section>
+  </main>
 
 </body>
 </html>
