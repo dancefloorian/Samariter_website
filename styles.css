@@ -1,430 +1,123 @@
-/* styles.css — Samariter RED/WHITE (UPDATED v2)
-   Adds (new in v2):
-   - Notfallnummern styles (.emergencyList, .emergencyRow, ...)
-   Keeps:
-   - Hero slideshow support (.slideshow, .slide)
-   - "Über uns" icon square cards (.infoGrid, .infoCard, .infoIcon)
-   - header/nav, logo container
-   - page containers
-   - Vorstand list
-*/
+/* =========================
+   EXTRA STYLES (UPDATE)
+   For:
+   - Jungsamariter (content cards + lists + program table)
+   - Links (nice lists + link styling)
+   - Jahresprogramm (program table + headings)
+   Paste this at the VERY END of your styles.css
+   ========================= */
 
-:root{
-  --brand: #e10600;
-  --brand-dark: #b80000;
-  --brand-soft: rgba(225, 6, 0, 0.12);
-
-  --text: #111;
-  --muted: #555;
-
-  --border: rgba(0,0,0,0.10);
-  --shadow: 0 12px 30px rgba(0,0,0,.10);
-
-  --radius: 18px;
-  --container: 1300px;
-
-  /* height used to offset fixed header */
-  --header-offset: 110px;
+/* Make h3 inside cards consistent and red */
+.contentCard h3{
+  margin: 0 0 10px 0;
+  color: var(--brand);
+  font-size: 20px;
+  font-weight: 900;
 }
 
-*{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; }
-
-body{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: #fff;
-  color: var(--text);
-  line-height: 1.5;
+/* Better spacing for lists inside cards (Links + Jungsamariter) */
+.contentCard ul{
+  margin: 10px 0 0 0;
+  padding-left: 20px;
 }
 
-a{ color: inherit; text-decoration:none; }
-a:hover{ text-decoration: underline; }
-
-/* =========================================
-   CONTAINER
-   ========================================= */
-.container{
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 20px;
+.contentCard li{
+  margin: 10px 0;
+  line-height: 1.45;
 }
 
-/* =========================================
-   HEADER / NAV
-   ========================================= */
-.header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(10px);
-
-  border-bottom: 4px solid var(--brand);
+/* Links page: nicer link look (still red/white) */
+.pageContainer a{
+  color: var(--brand);
+  font-weight: 800;
+  text-decoration: none;
 }
 
-.header__inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 18px;
-  padding: 14px 0;
-  flex-wrap: wrap;
+.pageContainer a:hover{
+  text-decoration: underline;
 }
 
-/* Logo container */
-.logoBox{
-  display:flex;
-  align-items:center;
+/* Optional: make external links not break layout */
+.pageContainer a{
+  word-break: break-word;
 }
 
-.logoBox__img{
-  height: 58px;
-  width: auto;
-  display:block;
-}
+/* =========================
+   PROGRAM TABLE (Jahresprogramm + Help Jahresprogramm)
+   ========================= */
 
-/* Navigation */
-.nav{
-  display:flex;
+.programTable{
+  display: grid;
   gap: 12px;
-  flex-wrap: wrap;
+  margin-top: 12px;
 }
 
-.navBtn{
-  display:inline-block;
-  padding: 10px 16px;
+/* 3 columns: Date/Time | Location | Topic */
+.programRow{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1.4fr;
+  gap: 15px;
+  align-items: start;
+
+  padding: 14px 16px;
   border-radius: 16px;
-
-  font-size: 18px;
-  font-weight: 650;
-
-  color: var(--text);
-  transition: 0.18s ease;
-
-  text-decoration: none !important;
-}
-
-.navBtn:hover{
-  background: var(--brand-soft);
-  color: var(--brand);
-}
-
-.navBtn.active{
-  background: var(--brand-soft);
-  color: var(--brand);
-  box-shadow: inset 0 0 0 2px rgba(225, 6, 0, 0.18);
-}
-
-/* =========================================
-   HOME: HERO + SLIDESHOW
-   ========================================= */
-.teamHero{
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  /* leaves room for the fixed header */
-  padding-top: var(--header-offset);
-}
-
-/* Slideshow container fills hero */
-.slideshow{
-  position:absolute;
-  inset:0;
-  z-index: 0;
-}
-
-/* Each slide fills hero and fades */
-.slide{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  object-position: center;
-
-  opacity: 0;
-  transition: opacity 1.2s ease-in-out;
-}
-
-.slide.active{
-  opacity: 1;
-}
-
-/* (Backwards compatibility if you still use teamHero__img somewhere) */
-.teamHero__img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.teamHero__overlay{
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,0.45);
-  z-index: 1;
-}
-
-.teamHero__content{
-  position: relative;
-  z-index: 2;
-
-  text-align: center;
-  color: #fff;
-
-  max-width: 900px;
-  padding: 28px 36px;
-  border-radius: 26px;
-
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(6px);
-
-  box-shadow: var(--shadow);
-}
-
-.teamHero__content h1{
-  font-size: clamp(28px, 4vw, 62px);
-  font-weight: 900;
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-
-.teamHero__content p{
-  font-size: clamp(14px, 2vw, 22px);
-  opacity: 0.95;
-  line-height: 1.4;
-}
-
-/* =========================================
-   SUBPAGES + SECTIONS: PAGE CONTAINER
-   ========================================= */
-.pageContent{
-  min-height: auto;
-  padding-top: calc(var(--header-offset) + 10px);
-  padding-bottom: 40px;
-  background: #fff;
-}
-
-.pageContainer{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.pageContainer h1{
-  color: var(--brand);
-  font-size: clamp(28px, 3.3vw, 46px);
-  font-weight: 900;
-  margin-bottom: 10px;
-  letter-spacing: -0.4px;
-}
-
-.pageContainer p{
-  font-size: 18px;
-  color: #333;
-}
-
-/* Card for content blocks */
-.contentCard{
-  margin-top: 18px;
-  padding: 18px;
-  border-radius: 20px;
   border: 1px solid var(--border);
-  box-shadow: 0 10px 26px rgba(0,0,0,.06);
   background: #fff;
 }
 
-/* =========================================
-   "ÜBER UNS" ICON GRID (SQUARE CARDS)
-   ========================================= */
+/* Date/time column */
+.programRow div:first-child{
+  font-weight: 900;
+  color: var(--brand);
+}
+
+/* Location column */
+.programRow div:nth-child(2){
+  font-weight: 800;
+  color: #222;
+  opacity: 0.95;
+}
+
+/* Topic column */
+.programRow div:nth-child(3){
+  font-weight: 700;
+  color: #222;
+}
+
+/* Highlight rows like "Sommerpause" (when only first cell has text) */
+.programRow:has(div:nth-child(2):empty):has(div:nth-child(3):empty){
+  background: rgba(0,0,0,0.03);
+}
+.programRow:has(div:nth-child(2):empty):has(div:nth-child(3):empty) div:first-child{
+  color: #444;
+}
+
+/* =========================
+   Responsive adjustments for program tables
+   ========================= */
+@media (max-width: 900px){
+  .programRow{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .programRow div:nth-child(2),
+  .programRow div:nth-child(3){
+    padding-top: 2px;
+  }
+}
+
+/* =========================
+   Jungsamariter: intro text spacing (already exists but improved)
+   ========================= */
 .introText{
   margin-top: 6px;
-  color: var(--muted);
-  font-size: 18px;
+  margin-bottom: 14px;
 }
 
-.infoGrid{
-  margin-top: 18px;
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.infoCard{
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: 0 10px 22px rgba(0,0,0,.06);
-
-  aspect-ratio: 1 / 1;
-  padding: 18px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap: 8px;
-
-  transition: 0.2s ease;
-}
-
-.infoCard:hover{
-  transform: translateY(-3px);
-  border-color: rgba(225,6,0,0.30);
-  box-shadow: 0 16px 30px rgba(225,6,0,.10);
-}
-
-.infoIcon{
-  width: 54px;
-  height: 54px;
-  border-radius: 16px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size: 26px;
-
-  background: var(--brand-soft);
-  border: 1px solid rgba(225,6,0,0.25);
-}
-
-.infoCard h3{
-  font-size: 18px;
-  font-weight: 900;
-  color: var(--brand);
-}
-
-.infoCard p{
-  font-size: 16px;
-  font-weight: 650;
-  color: #222;
-  line-height: 1.35;
-}
-
-.smallMuted{
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-/* =========================================
-   VORSTAND LIST
-   ========================================= */
-.boardList{
-  display: grid;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.boardRow{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-
-  padding: 14px 16px;
-  border-radius: 16px;
-
-  border: 1px solid var(--border);
-  background: #fff;
-}
-
-.boardRole{
-  font-weight: 900;
-  color: var(--brand);
-}
-
-.boardName{
-  font-weight: 650;
-  color: #222;
-}
-
-/* =========================================
-   NOTFALLNUMMERN (NEW)
-   ========================================= */
-.emergencyList{
-  display: grid;
-  gap: 14px;
-  margin-top: 10px;
-}
-
-.emergencyRow{
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  background: #fff;
-
-  font-size: 20px;
-}
-
-.emergencyName{
-  font-weight: 700;
-}
-
-.emergencyNumber{
-  font-weight: 900;
-  font-size: 22px;
-  color: var(--brand);
-}
-
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-@media (max-width: 1100px){
-  .infoGrid{ grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 950px){
-  :root{
-    --header-offset: 140px; /* header wraps on smaller screens */
-  }
-
-  .logoBox__img{ height: 48px; }
-
-  .navBtn{
-    font-size: 16px;
-    padding: 8px 12px;
-  }
-
-  .header__inner{
-    padding: 12px 0;
-  }
-}
-
-@media (max-width: 850px){
-  .infoGrid{ grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 700px){
-  .boardRow{
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-}
-
-@media (max-width: 600px){
-  .infoGrid{ grid-template-columns: 1fr; }
-
-  .emergencyRow{
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
-  .emergencyNumber{
-    font-size: 20px;
-  }
+/* =========================
+   Jahresprogramm: make section headings breathe a bit
+   ========================= */
+.pageContainer h1{
+  scroll-margin-top: calc(var(--header-offset) + 10px);
 }
