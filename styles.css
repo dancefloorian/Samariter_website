@@ -1,8 +1,9 @@
-/* styles.css — Samariter RED/WHITE (UPDATED)
-   Adds:
-   - Hero slideshow support (.slideshow, .slide, fade transition)
-   - "Über uns" icon square cards (.infoGrid, .infoCard, .infoIcon)
+/* styles.css — Samariter RED/WHITE (UPDATED v2)
+   Adds (new in v2):
+   - Notfallnummern styles (.emergencyList, .emergencyRow, ...)
    Keeps:
+   - Hero slideshow support (.slideshow, .slide)
+   - "Über uns" icon square cards (.infoGrid, .infoCard, .infoIcon)
    - header/nav, logo container
    - page containers
    - Vorstand list
@@ -73,7 +74,7 @@ a:hover{ text-decoration: underline; }
   flex-wrap: wrap;
 }
 
-/* Logo JPEG container */
+/* Logo container */
 .logoBox{
   display:flex;
   align-items:center;
@@ -103,7 +104,6 @@ a:hover{ text-decoration: underline; }
   color: var(--text);
   transition: 0.18s ease;
 
-  /* keeps hover/background looking like a button */
   text-decoration: none !important;
 }
 
@@ -254,7 +254,6 @@ a:hover{ text-decoration: underline; }
   font-size: 18px;
 }
 
-/* responsive grid */
 .infoGrid{
   margin-top: 18px;
   display: grid;
@@ -351,6 +350,38 @@ a:hover{ text-decoration: underline; }
 }
 
 /* =========================================
+   NOTFALLNUMMERN (NEW)
+   ========================================= */
+.emergencyList{
+  display: grid;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.emergencyRow{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #fff;
+
+  font-size: 20px;
+}
+
+.emergencyName{
+  font-weight: 700;
+}
+
+.emergencyNumber{
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--brand);
+}
+
+/* =========================================
    RESPONSIVE
    ========================================= */
 @media (max-width: 1100px){
@@ -387,4 +418,13 @@ a:hover{ text-decoration: underline; }
 
 @media (max-width: 600px){
   .infoGrid{ grid-template-columns: 1fr; }
+
+  .emergencyRow{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .emergencyNumber{
+    font-size: 20px;
+  }
 }
