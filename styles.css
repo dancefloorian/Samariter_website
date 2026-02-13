@@ -1,11 +1,261 @@
+/* styles.css — Samariter RED/WHITE (FULL)
+   Includes:
+   - Header + Navigation + Logo
+   - Home hero slideshow + overlay + center text
+   - Page containers + content cards
+   - "Über uns" square icon cards
+   - Vorstand list
+   - Notfallnummern list
+   - Program tables (Jahresprogramm + Help Jahresprogramm)
+   - Tabs (Jungsamariter: Informationen / Jahresprogramm)
+   - Links page link styling + list spacing
+   - Contact page grid + form
+   - Optional: Course buttons
+*/
+
 /* =========================
-   EXTRA STYLES (UPDATE v2)
-   For:
-   - Jungsamariter tabs (Informationen / Jahresprogramm 2026)
-   - Program tables (Help + Jahresprogramm)
-   - Links page list styling + link styling
-   Paste this at the VERY END of your styles.css
+   ROOT + RESET
    ========================= */
+:root{
+  --brand: #e10600;
+  --brand-dark: #b80000;
+  --brand-soft: rgba(225, 6, 0, 0.12);
+
+  --text: #111;
+  --muted: #555;
+
+  --border: rgba(0,0,0,0.10);
+  --shadow: 0 12px 30px rgba(0,0,0,.10);
+
+  --radius: 18px;
+  --container: 1300px;
+
+  /* height used to offset fixed header */
+  --header-offset: 110px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+a{ color: inherit; text-decoration:none; }
+a:hover{ text-decoration: underline; }
+
+/* =========================
+   GLOBAL CONTAINER
+   ========================= */
+.container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =========================
+   HEADER / NAV
+   ========================= */
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 4px solid var(--brand);
+}
+
+.header__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 18px;
+  padding: 14px 0;
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.logoBox{
+  display:flex;
+  align-items:center;
+}
+.logoBox__img{
+  height: 58px;
+  width: auto;
+  display:block;
+}
+
+/* Navigation */
+.nav{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.navBtn{
+  display:inline-block;
+  padding: 10px 16px;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 650;
+  color: var(--text);
+  transition: 0.18s ease;
+  text-decoration: none !important;
+}
+
+.navBtn:hover{
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.navBtn.active{
+  background: var(--brand-soft);
+  color: var(--brand);
+  box-shadow: inset 0 0 0 2px rgba(225, 6, 0, 0.18);
+}
+
+/* =========================
+   HOME: HERO + SLIDESHOW
+   ========================= */
+.teamHero{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  /* leaves room for the fixed header */
+  padding-top: var(--header-offset);
+}
+
+/* Slideshow container fills hero */
+.slideshow{
+  position:absolute;
+  inset:0;
+  z-index: 0;
+}
+
+/* Slides */
+.slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.slide.active{ opacity: 1; }
+
+/* Backwards compatibility */
+.teamHero__img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Overlay above images */
+.teamHero__overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+/* Centered content */
+.teamHero__content{
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+  color: #fff;
+
+  max-width: 900px;
+  padding: 28px 36px;
+  border-radius: 26px;
+
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(6px);
+
+  box-shadow: var(--shadow);
+}
+
+.teamHero__content h1{
+  font-size: clamp(28px, 4vw, 62px);
+  font-weight: 900;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.teamHero__content p{
+  font-size: clamp(14px, 2vw, 22px);
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+/* =========================
+   PAGES: CONTAINER + TYPO
+   ========================= */
+.pageContent{
+  min-height: auto;
+  padding-top: calc(var(--header-offset) + 10px);
+  padding-bottom: 40px;
+  background: #fff;
+}
+
+.pageContainer{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.pageContainer h1{
+  color: var(--brand);
+  font-size: clamp(28px, 3.3vw, 46px);
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: -0.4px;
+
+  /* anchor offset for fixed header */
+  scroll-margin-top: calc(var(--header-offset) + 10px);
+}
+
+.pageContainer p{
+  font-size: 18px;
+  color: #333;
+}
+
+/* Intro text helper */
+.introText{
+  margin-top: 6px;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* Content card */
+.contentCard{
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 26px rgba(0,0,0,.06);
+  background: #fff;
+}
 
 /* Make h3 inside cards consistent and red */
 .contentCard h3{
@@ -15,92 +265,166 @@
   font-weight: 900;
 }
 
-/* Better spacing for lists inside cards (Links + Jungsamariter) */
+/* Lists inside cards (Links + Jungsamariter) */
 .contentCard ul{
   margin: 10px 0 0 0;
   padding-left: 20px;
 }
-
 .contentCard li{
   margin: 10px 0;
   line-height: 1.45;
 }
 
-/* Links: nicer link look (still red/white) */
+/* Links look (red/white) */
 .pageContainer a{
   color: var(--brand);
   font-weight: 800;
   text-decoration: none;
   word-break: break-word;
 }
-
 .pageContainer a:hover{
   text-decoration: underline;
 }
 
-/* =========================
-   TABS (Jungsamariter)
-   ========================= */
+/* Small muted helper */
+.smallMuted{
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
 
-.tabButtons{
+/* =========================
+   "ÜBER UNS" ICON GRID (SQUARE CARDS)
+   ========================= */
+.infoGrid{
   margin-top: 18px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-.tabBtn{
-  padding: 10px 18px;
-  border-radius: 20px;
-  border: 2px solid var(--brand);
+.infoCard{
   background: #fff;
-  color: var(--brand);
-  font-weight: 900;
-  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+
+  aspect-ratio: 1 / 1;
+  padding: 18px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap: 8px;
+
   transition: 0.2s ease;
-
-  /* remove default button styles */
-  appearance: none;
-  -webkit-appearance: none;
 }
 
-.tabBtn:hover{
+.infoCard:hover{
+  transform: translateY(-3px);
+  border-color: rgba(225,6,0,0.30);
+  box-shadow: 0 16px 30px rgba(225,6,0,.10);
+}
+
+.infoIcon{
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 26px;
   background: var(--brand-soft);
+  border: 1px solid rgba(225,6,0,0.25);
 }
 
-.tabBtn.active{
-  background: var(--brand);
-  color: #fff;
-}
-
-.tabContent{
-  display: none;
-  margin-top: 22px;
-}
-
-.tabContent.active{
-  display: block;
-}
-
-.tabHeading{
-  margin-top: 10px;
-  margin-bottom: 0;
-  color: var(--brand);
-  font-size: clamp(22px, 2.5vw, 30px);
+.infoCard h3{
+  font-size: 18px;
   font-weight: 900;
+  color: var(--brand);
+  margin: 0;
+}
+
+.infoCard p{
+  font-size: 16px;
+  font-weight: 650;
+  color: #222;
+  line-height: 1.35;
+  margin: 0;
 }
 
 /* =========================
-   PROGRAM TABLE (Jahresprogramm + Help Jahresprogramm)
+   VORSTAND LIST
    ========================= */
+.boardList{
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
 
+.boardRow{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  padding: 14px 16px;
+  border-radius: 16px;
+
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.boardRole{
+  font-weight: 900;
+  color: var(--brand);
+}
+
+.boardName{
+  font-weight: 650;
+  color: #222;
+}
+
+/* =========================
+   NOTFALLNUMMERN
+   ========================= */
+.emergencyList{
+  display: grid;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.emergencyRow{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #fff;
+
+  font-size: 20px;
+}
+
+.emergencyName{
+  font-weight: 700;
+}
+
+.emergencyNumber{
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--brand);
+}
+
+/* =========================
+   PROGRAM TABLES (Jahresprogramm + Help)
+   ========================= */
 .programTable{
   display: grid;
   gap: 12px;
   margin-top: 12px;
 }
 
-/* 3 columns: Date/Time | Location | Topic */
 .programRow{
   display: grid;
   grid-template-columns: 1.2fr 0.8fr 1.4fr;
@@ -132,7 +456,7 @@
   color: #222;
 }
 
-/* Highlight rows like "Sommerpause" (2nd + 3rd cell empty) */
+/* Highlight rows like "Sommerpause" (2nd + 3rd empty) */
 .programRow:has(div:nth-child(2):empty):has(div:nth-child(3):empty){
   background: rgba(0,0,0,0.03);
 }
@@ -141,8 +465,183 @@
 }
 
 /* =========================
-   Responsive adjustments
+   TABS (Jungsamariter)
    ========================= */
+.tabButtons{
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tabBtn{
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 2px solid var(--brand);
+  background: #fff;
+  color: var(--brand);
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.tabBtn:hover{ background: var(--brand-soft); }
+
+.tabBtn.active{
+  background: var(--brand);
+  color: #fff;
+}
+
+.tabContent{
+  display: none;
+  margin-top: 22px;
+}
+.tabContent.active{ display: block; }
+
+.tabHeading{
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: var(--brand);
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 900;
+}
+
+/* =========================
+   CONTACT PAGE (optional template)
+   ========================= */
+.contactGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.smallTitle{
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--brand);
+  margin-bottom: 12px;
+}
+
+.infoRow{
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.infoRow:last-child{ border-bottom: none; }
+
+.infoLabel{
+  font-weight: 900;
+  color: var(--brand);
+}
+
+.infoValue{
+  color: #222;
+  font-weight: 650;
+}
+
+/* Form */
+.contactForm{
+  display: grid;
+  gap: 12px;
+}
+
+.formField{
+  display: grid;
+  gap: 6px;
+}
+
+.formField label{
+  font-weight: 900;
+  color: var(--brand);
+  font-size: 14px;
+}
+
+.formField input,
+.formField textarea{
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.15);
+  padding: 12px 14px;
+  font-size: 16px;
+  outline: none;
+  font-family: inherit;
+}
+
+.formField input:focus,
+.formField textarea:focus{
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(225, 6, 0, 0.10);
+}
+
+.sendBtn{
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+
+  background: var(--brand);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  transition: 0.2s;
+}
+
+.sendBtn:hover{ background: var(--brand-dark); }
+
+.formHint{
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* =========================
+   OPTIONAL: COURSE BUTTONS
+   ========================= */
+.courseButtons{
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+.courseBtn{
+  display: inline-block;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.courseBtn:hover{ background: var(--brand-dark); }
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 1100px){
+  .infoGrid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 950px){
+  :root{ --header-offset: 140px; } /* header wraps */
+
+  .logoBox__img{ height: 48px; }
+
+  .navBtn{
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .header__inner{ padding: 12px 0; }
+}
+
 @media (max-width: 900px){
   .programRow{
     grid-template-columns: 1fr;
@@ -153,15 +652,28 @@
   .programRow div:nth-child(3){
     padding-top: 2px;
   }
+
+  .contactGrid{ grid-template-columns: 1fr; }
 }
 
-/* Intro text spacing */
-.introText{
-  margin-top: 6px;
-  margin-bottom: 14px;
+@media (max-width: 850px){
+  .infoGrid{ grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Make anchors scroll correctly below fixed header */
-.pageContainer h1{
-  scroll-margin-top: calc(var(--header-offset) + 10px);
+@media (max-width: 700px){
+  .boardRow{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 600px){
+  .infoGrid{ grid-template-columns: 1fr; }
+
+  .emergencyRow{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .emergencyNumber{ font-size: 20px; }
 }
