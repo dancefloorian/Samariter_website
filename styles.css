@@ -1,9 +1,11 @@
-/* styles.css — Samariter RED/WHITE
-   Works for:
-   - index.html (full-page team image)
-   - all subpages (pageContent + pageContainer)
-   - logo.jpeg container in header
-   - Vorstand list (boardList)
+/* styles.css — Samariter RED/WHITE (UPDATED)
+   Adds:
+   - Hero slideshow support (.slideshow, .slide, fade transition)
+   - "Über uns" icon square cards (.infoGrid, .infoCard, .infoIcon)
+   Keeps:
+   - header/nav, logo container
+   - page containers
+   - Vorstand list
 */
 
 :root{
@@ -25,7 +27,6 @@
 }
 
 *{ box-sizing:border-box; margin:0; padding:0; }
-
 html{ scroll-behavior:smooth; }
 
 body{
@@ -118,7 +119,7 @@ a:hover{ text-decoration: underline; }
 }
 
 /* =========================================
-   HOME: FULL PAGE TEAM IMAGE
+   HOME: HERO + SLIDESHOW
    ========================================= */
 .teamHero{
   height: 100vh;
@@ -134,6 +135,31 @@ a:hover{ text-decoration: underline; }
   padding-top: var(--header-offset);
 }
 
+/* Slideshow container fills hero */
+.slideshow{
+  position:absolute;
+  inset:0;
+  z-index: 0;
+}
+
+/* Each slide fills hero and fades */
+.slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active{
+  opacity: 1;
+}
+
+/* (Backwards compatibility if you still use teamHero__img somewhere) */
 .teamHero__img{
   position:absolute;
   inset:0;
@@ -147,10 +173,13 @@ a:hover{ text-decoration: underline; }
   position:absolute;
   inset:0;
   background: rgba(0,0,0,0.45);
+  z-index: 1;
 }
 
 .teamHero__content{
   position: relative;
+  z-index: 2;
+
   text-align: center;
   color: #fff;
 
@@ -178,11 +207,12 @@ a:hover{ text-decoration: underline; }
 }
 
 /* =========================================
-   SUBPAGES: PAGE CONTAINER
+   SUBPAGES + SECTIONS: PAGE CONTAINER
    ========================================= */
 .pageContent{
-  min-height: 100vh;
+  min-height: auto;
   padding-top: calc(var(--header-offset) + 10px);
+  padding-bottom: 40px;
   background: #fff;
 }
 
@@ -212,7 +242,81 @@ a:hover{ text-decoration: underline; }
   border-radius: 20px;
   border: 1px solid var(--border);
   box-shadow: 0 10px 26px rgba(0,0,0,.06);
-  background: white;
+  background: #fff;
+}
+
+/* =========================================
+   "ÜBER UNS" ICON GRID (SQUARE CARDS)
+   ========================================= */
+.introText{
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* responsive grid */
+.infoGrid{
+  margin-top: 18px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.infoCard{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+
+  aspect-ratio: 1 / 1;
+  padding: 18px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap: 8px;
+
+  transition: 0.2s ease;
+}
+
+.infoCard:hover{
+  transform: translateY(-3px);
+  border-color: rgba(225,6,0,0.30);
+  box-shadow: 0 16px 30px rgba(225,6,0,.10);
+}
+
+.infoIcon{
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size: 26px;
+
+  background: var(--brand-soft);
+  border: 1px solid rgba(225,6,0,0.25);
+}
+
+.infoCard h3{
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--brand);
+}
+
+.infoCard p{
+  font-size: 16px;
+  font-weight: 650;
+  color: #222;
+  line-height: 1.35;
+}
+
+.smallMuted{
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* =========================================
@@ -249,6 +353,10 @@ a:hover{ text-decoration: underline; }
 /* =========================================
    RESPONSIVE
    ========================================= */
+@media (max-width: 1100px){
+  .infoGrid{ grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 950px){
   :root{
     --header-offset: 140px; /* header wraps on smaller screens */
@@ -266,9 +374,17 @@ a:hover{ text-decoration: underline; }
   }
 }
 
+@media (max-width: 850px){
+  .infoGrid{ grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 700px){
   .boardRow{
     grid-template-columns: 1fr;
     gap: 6px;
   }
+}
+
+@media (max-width: 600px){
+  .infoGrid{ grid-template-columns: 1fr; }
 }
