@@ -37,9 +37,15 @@
   <!-- MAIN -->
   <main>
 
-    <!-- TEAM IMAGE -->
+    <!-- HERO SLIDESHOW (auto changing .jpeg images) -->
     <section class="teamHero">
-      <img src="bewusstlosenlagerung.jpeg" alt="Team Foto" class="teamHero__img" />
+      <div class="slideshow">
+        <img src="bewusstlosenlagerung.jpeg" alt="" class="slide active" />
+        <img src="images/slide2.jpeg" alt="" class="slide" />
+        <img src="images/slide3.jpeg" alt="" class="slide" />
+        <img src="images/slide4.jpeg" alt="" class="slide" />
+      </div>
+
       <div class="teamHero__overlay"></div>
 
       <div class="teamHero__content">
@@ -48,31 +54,81 @@
       </div>
     </section>
 
-    <!-- ÜBER UNS -->
+    <!-- ÜBER UNS (icons + square cards, less text) -->
     <section class="pageContent">
       <div class="pageContainer">
 
         <h1>Über uns</h1>
-        <p>
-          Der Samariterverein Sils im Domleschg engagiert sich für die Sicherheit und Gesundheit
-          in unserer Region. Wir bilden in Erster Hilfe aus, leisten Sanitätsdienst an Anlässen
-          und fördern den Zusammenhalt in der Gemeinschaft.
-        </p>
+        <p class="introText">Kurz & übersichtlich: Wer wir sind und was wir machen.</p>
 
-        <div class="contentCard">
-          <p>
-            <strong>Unsere Aufgaben:</strong><br>
-            • Erste-Hilfe-Kurse für Erwachsene und Jugendliche<br>
-            • Sanitätsdienst bei Veranstaltungen<br>
-            • Übungen und Weiterbildungen im Team<br>
-            • Förderung der Jungsamariter
-          </p>
+        <div class="infoGrid">
+
+          <div class="infoCard">
+            <div class="infoIcon">📅</div>
+            <h3>Gegründet</h3>
+            <p>1941</p>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">👥</div>
+            <h3>Mitglieder</h3>
+            <p>19 Aktivmitglieder<br><span class="smallMuted">(bunt gemischt)</span></p>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">🏛️</div>
+            <h3>Übungen</h3>
+            <p>1× pro Monat<br><span class="smallMuted">Palazzo Gartensaal</span></p>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">🩺</div>
+            <h3>Publikumskurse</h3>
+            <p>Nothelfer<br>CPR / BLS-AED<br>Kleinkinder</p>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">🎉</div>
+            <h3>Vereinsleben</h3>
+            <p>Vereinsreise<br>Sommerhöck<br>Samiklaus</p>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">🤝</div>
+            <h3>Reinschauen?</h3>
+            <p>Jederzeit willkommen<br><span class="smallMuted">unverbindlich</span></p>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">❤️</div>
+            <h3>Warum?</h3>
+            <p>Wissen kann helfen<br>und Leben retten</p>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">📌</div>
+            <h3>Ort</h3>
+            <p>Sils i.D.<br><span class="smallMuted">Domleschg</span></p>
+          </div>
+
         </div>
 
       </div>
     </section>
 
   </main>
+
+  <!-- Slideshow JS -->
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 5000); // change every 5 seconds
+  </script>
 
 </body>
 </html>
