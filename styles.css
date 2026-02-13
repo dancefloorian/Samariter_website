@@ -1,9 +1,9 @@
 /* =========================
-   EXTRA STYLES (UPDATE)
+   EXTRA STYLES (UPDATE v2)
    For:
-   - Jungsamariter (content cards + lists + program table)
-   - Links (nice lists + link styling)
-   - Jahresprogramm (program table + headings)
+   - Jungsamariter tabs (Informationen / Jahresprogramm 2026)
+   - Program tables (Help + Jahresprogramm)
+   - Links page list styling + link styling
    Paste this at the VERY END of your styles.css
    ========================= */
 
@@ -26,20 +26,68 @@
   line-height: 1.45;
 }
 
-/* Links page: nicer link look (still red/white) */
+/* Links: nicer link look (still red/white) */
 .pageContainer a{
   color: var(--brand);
   font-weight: 800;
   text-decoration: none;
+  word-break: break-word;
 }
 
 .pageContainer a:hover{
   text-decoration: underline;
 }
 
-/* Optional: make external links not break layout */
-.pageContainer a{
-  word-break: break-word;
+/* =========================
+   TABS (Jungsamariter)
+   ========================= */
+
+.tabButtons{
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tabBtn{
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 2px solid var(--brand);
+  background: #fff;
+  color: var(--brand);
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  /* remove default button styles */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.tabBtn:hover{
+  background: var(--brand-soft);
+}
+
+.tabBtn.active{
+  background: var(--brand);
+  color: #fff;
+}
+
+.tabContent{
+  display: none;
+  margin-top: 22px;
+}
+
+.tabContent.active{
+  display: block;
+}
+
+.tabHeading{
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: var(--brand);
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 900;
 }
 
 /* =========================
@@ -84,7 +132,7 @@
   color: #222;
 }
 
-/* Highlight rows like "Sommerpause" (when only first cell has text) */
+/* Highlight rows like "Sommerpause" (2nd + 3rd cell empty) */
 .programRow:has(div:nth-child(2):empty):has(div:nth-child(3):empty){
   background: rgba(0,0,0,0.03);
 }
@@ -93,7 +141,7 @@
 }
 
 /* =========================
-   Responsive adjustments for program tables
+   Responsive adjustments
    ========================= */
 @media (max-width: 900px){
   .programRow{
@@ -107,17 +155,13 @@
   }
 }
 
-/* =========================
-   Jungsamariter: intro text spacing (already exists but improved)
-   ========================= */
+/* Intro text spacing */
 .introText{
   margin-top: 6px;
   margin-bottom: 14px;
 }
 
-/* =========================
-   Jahresprogramm: make section headings breathe a bit
-   ========================= */
+/* Make anchors scroll correctly below fixed header */
 .pageContainer h1{
   scroll-margin-top: calc(var(--header-offset) + 10px);
 }
