@@ -12,63 +12,130 @@
 <body>
 
   <!-- HEADER -->
-  <header class="header">
-    <div class="container header__inner">
+  <header class="siteHeader">
+    <div class="container headerRow">
 
-      <!-- Logo -->
-      <div class="logoBox">
-        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img" />
-      </div>
+      <a class="brand" href="index.html" aria-label="Startseite">
+        <img src="logo.jpeg" alt="Samariter Logo" class="brandLogo" />
+        <div class="brandText">
+          <span class="brandName">Samariterverein</span>
+          <span class="brandSub">Kurse & Ausbildung</span>
+        </div>
+      </a>
 
-      <!-- Navigation -->
       <nav class="nav">
-        <a class="navBtn" href="index.html">Home</a>
-        <a class="navBtn" href="vorstand.html">Vorstand</a>
-        <a class="navBtn" href="kontakt.html">Kontakt</a>
-        <a class="navBtn active" href="kurse.html">Kurse</a>
-        <a class="navBtn" href="jungsamariter.html">Jungsamariter</a>
-        <a class="navBtn" href="links.html">Links</a>
-        <a class="navBtn" href="jahresprogramm.html">Jahresprogramm</a>
+        <a class="navLink" href="index.html">Home</a>
+        <a class="navLink" href="vorstand.html">Vorstand</a>
+        <a class="navLink" href="kontakt.html">Kontakt</a>
+        <a class="navLink isActive" href="kurse.html">Kurse</a>
+        <a class="navLink" href="jungsamariter.html">Jungsamariter</a>
+        <a class="navLink" href="links.html">Links</a>
+        <a class="navLink" href="jahresprogramm.html">Jahresprogramm</a>
       </nav>
 
     </div>
   </header>
 
-  <!-- PAGE CONTENT -->
-  <main class="pageContent">
-    <section class="pageContainer">
+  <!-- MAIN -->
+  <main>
 
-      <h1>Kurse</h1>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container heroGrid">
+        <div class="heroText">
+          <h1>Kurse</h1>
+          <p class="lead">
+            Lernen Sie, in Notfällen sicher zu handeln – kompakt, verständlich und praxisnah.
+          </p>
 
-      <p>
-        Haben Sie kleine Kinder oder betreuen Sie ab und zu welche? Dann wäre der Kurs
-        <strong>Notfälle bei Kleinkindern</strong> eine gute Sache.
-        Hier lernen Sie, was in einem Notfall zu tun ist und wissen, wie Sie reagieren können.
-      </p>
+          <div class="heroActions">
+            <a class="btn btnPrimary" href="#kurse">Kurse ansehen</a>
+            <a class="btn btnGhost" href="kontakt.html">Frage stellen</a>
+          </div>
+        </div>
 
-      <p>
-        Jeder von uns kann in eine Situation kommen, in der <strong>1. Hilfe</strong> nötig ist.
-        Um zu wissen, was in so einem Fall zu tun ist, bieten wir den
-        <strong>BLS/AED Komplett Kurs (Herz-Lungenwiederbelebung)</strong> an.
-        <strong>3h</strong> um allenfalls ein Leben retten zu können.
-      </p>
-
-      <div class="contentCard">
-        <p>
-          Haben wir Ihr Interesse geweckt, dann melden Sie sich doch via Link beim entsprechenden Kurs an.
-          Für Fragen stehen wir gerne bereit.<br><br>
-          <strong>Wir freuen uns auf Sie.</strong>
-        </p>
+        <div class="heroCard">
+          <h2>Gut vorbereitet sein</h2>
+          <p>
+            Ob Kleinkind-Notfälle oder Herz-Lungen-Wiederbelebung:
+            Wir zeigen Ihnen Schritt für Schritt, was wirklich zählt.
+          </p>
+          <ul class="checkList">
+            <li>Praxisorientiert</li>
+            <li>Kurze Kursdauer</li>
+            <li>Für Alltag & Familie</li>
+          </ul>
+        </div>
       </div>
-
-      <!-- OPTIONAL: Buttons for later course links -->
-      <div class="courseButtons">
-        <a class="courseBtn" href="#">Notfälle bei Kleinkindern (Anmeldung)</a>
-        <a class="courseBtn" href="#">BLS/AED Komplett Kurs (Anmeldung)</a>
-      </div>
-
     </section>
+
+    <!-- CONTENT -->
+    <section id="kurse" class="section">
+      <div class="container">
+
+        <div class="sectionHeader">
+          <h2>Unsere Angebote</h2>
+          <p>Wählen Sie den passenden Kurs und melden Sie sich direkt an.</p>
+        </div>
+
+        <div class="cards">
+
+          <!-- Kurs 1 -->
+          <article class="courseCard">
+            <div class="badge">Familie</div>
+            <h3>Notfälle bei Kleinkindern</h3>
+            <p>
+              Haben Sie kleine Kinder oder betreuen Sie ab und zu welche?
+              In diesem Kurs lernen Sie, wie Sie in Notfällen ruhig und richtig reagieren.
+            </p>
+
+            <div class="cardActions">
+              <a class="btn btnPrimary" href="#">Anmelden</a>
+              <a class="btn btnLink" href="kontakt.html">Fragen?</a>
+            </div>
+          </article>
+
+          <!-- Kurs 2 -->
+          <article class="courseCard">
+            <div class="badge badgeAlt">Erste Hilfe</div>
+            <h3>BLS/AED Komplett Kurs</h3>
+            <p>
+              Jeder kann in eine Situation kommen, in der 1. Hilfe nötig ist.
+              Im BLS/AED Kurs üben Sie die Herz-Lungen-Wiederbelebung – kompakt in <strong>3 Stunden</strong>.
+            </p>
+
+            <div class="cardActions">
+              <a class="btn btnPrimary" href="#">Anmelden</a>
+              <a class="btn btnLink" href="kontakt.html">Fragen?</a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+          <div>
+            <h3>Haben wir Ihr Interesse geweckt?</h3>
+            <p>
+              Melden Sie sich über den jeweiligen Kurs-Link an. Für Fragen stehen wir gerne bereit.
+              <strong>Wir freuen uns auf Sie.</strong>
+            </p>
+          </div>
+          <a class="btn btnGhost" href="kontakt.html">Kontakt aufnehmen</a>
+        </div>
+
+      </div>
+    </section>
+
   </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footerRow">
+      <p>© Samariterverein</p>
+      <p class="muted">Gemeinsam helfen – sicher handeln.</p>
+    </div>
+  </footer>
 
 </body>
 </html>
