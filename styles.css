@@ -1,16 +1,9 @@
-/* styles.css — Samariter RED/WHITE (FULL)
-   Includes:
-   - Header + Navigation + Logo
-   - Home hero slideshow + overlay + center text
-   - Page containers + content cards
-   - "Über uns" square icon cards
-   - Vorstand list
-   - Notfallnummern list
-   - Program tables (Jahresprogramm + Help Jahresprogramm)
-   - Tabs (Jungsamariter: Informationen / Jahresprogramm)
-   - Links page link styling + list spacing
-   - Contact page grid + form
-   - Optional: Course buttons
+/* styles.css — Samariter RED/WHITE (FULL • UPDATED)
+   Update highlights:
+   - Better hero readability (gradient overlay + text shadow)
+   - Cleaner hero typography + subtitle styling
+   - Optional CTA button (.heroBtn)
+   - Keeps everything else you already had (tabs, tables, cards, etc.)
 */
 
 /* =========================
@@ -107,6 +100,7 @@ a:hover{ text-decoration: underline; }
   font-weight: 650;
   color: var(--text);
   transition: 0.18s ease;
+  text подтверждение: none !important;
   text-decoration: none !important;
 }
 
@@ -168,15 +162,18 @@ a:hover{ text-decoration: underline; }
   object-position: center;
 }
 
-/* Overlay above images */
+/* Overlay above images (UPDATED: gradient for better readability) */
 .teamHero__overlay{
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.45);
   z-index: 1;
+  background: linear-gradient(
+    rgba(0,0,0,0.60),
+    rgba(0,0,0,0.35)
+  );
 }
 
-/* Centered content */
+/* Centered content (UPDATED: cleaner, less “boxy”) */
 .teamHero__content{
   position: relative;
   z-index: 2;
@@ -184,27 +181,54 @@ a:hover{ text-decoration: underline; }
   text-align: center;
   color: #fff;
 
-  max-width: 900px;
-  padding: 28px 36px;
+  max-width: 1000px;
+  padding: 22px 28px;
   border-radius: 26px;
 
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(6px);
+  /* remove foggy glass for cleaner look */
+  background: transparent;
+  backdrop-filter: none;
 
-  box-shadow: var(--shadow);
+  /* keep only a subtle separation */
+  text-shadow: 0 4px 20px rgba(0,0,0,0.45);
 }
 
+/* Headline (UPDATED: more stable line-height) */
 .teamHero__content h1{
-  font-size: clamp(28px, 4vw, 62px);
+  font-size: clamp(28px, 4.2vw, 64px);
   font-weight: 900;
+  letter-spacing: -0.6px;
+  line-height: 1.08;
   margin-bottom: 12px;
-  letter-spacing: -0.5px;
 }
 
+/* Subtitle (UPDATED: lighter, more elegant) */
 .teamHero__content p{
-  font-size: clamp(14px, 2vw, 22px);
-  opacity: 0.95;
-  line-height: 1.4;
+  font-size: clamp(14px, 1.7vw, 22px);
+  opacity: 0.92;
+  line-height: 1.35;
+  letter-spacing: 0.8px;
+}
+
+/* Optional CTA button for hero */
+.heroBtn{
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 22px;
+  border-radius: 24px;
+
+  background: var(--brand);
+  color: #fff;
+
+  font-weight: 900;
+  text-decoration: none !important;
+
+  transition: 0.2s ease;
+}
+
+.heroBtn:hover{
+  background: var(--brand-dark);
+  transform: translateY(-1px);
 }
 
 /* =========================
@@ -654,6 +678,10 @@ a:hover{ text-decoration: underline; }
   }
 
   .contactGrid{ grid-template-columns: 1fr; }
+
+  .teamHero__content{
+    padding: 18px 16px;
+  }
 }
 
 @media (max-width: 850px){
