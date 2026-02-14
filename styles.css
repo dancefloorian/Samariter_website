@@ -257,6 +257,19 @@ img{ max-width:100%; display:block; }
 }
 .muted{ color: var(--muted); }
 
+/* Obligatory program items */
+.obligatory{
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Optional: highlight the whole row if desired */
+.programRow:has(.obligatory){
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+}
+
+
 /* RESPONSIVE */
 @media (max-width: 900px){
   .heroGrid{ grid-template-columns: 1fr; }
