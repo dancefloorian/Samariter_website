@@ -1,51 +1,210 @@
-/* =========================
-   BETTER LAYOUT (Über uns)
-   ========================= */
+/* =========================================================
+   Samariterverein – styles.css (Red/Logo-matching theme)
+   Works with your CURRENT HTML classes:
+   .header, .headerRow, .container, .logoBox, .logoBox__img
+   .nav, .navBtn, .navBtn.isActive
+   .teamHero, .slideshow, .slide, .teamHero__overlay, .teamHero__content
+   .pageContent, .pageContainer, .introText
+   .infoGrid, .infoCard, .infoIcon, .smallMuted
+   ========================================================= */
 
+/* ---------- THEME ---------- */
 :root{
-  --accent: #d40000;
   --bg: #f7f7f7;
   --card: #ffffff;
   --line: #e6e6e6;
-  --text: #1e1e1e;
-  --muted: #666;
-  --shadow: 0 10px 24px rgba(0,0,0,0.08);
+
+  --text: #1f1f1f;
+  --muted: #666666;
+
+  /* Samariter Red (matches typical logo red) */
+  --accent: #d40000;
+  --accentSoft: rgba(212, 0, 0, 0.10);
+
   --radius: 18px;
+  --radiusSm: 14px;
+
+  --shadow: 0 12px 28px rgba(0,0,0,0.10);
+  --shadowSm: 0 8px 18px rgba(0,0,0,0.08);
+
+  --container: 1100px;
 }
 
-/* Ensure base layout */
+/* ---------- BASE / RESET ---------- */
+*{ box-sizing: border-box; }
+html, body{ margin: 0; padding: 0; }
+img{ max-width: 100%; display: block; }
+a{ color: inherit; text-decoration: none; }
+
 body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
+  line-height: 1.6;
 }
 
-/* Your page wrapper */
+/* ---------- LAYOUT HELPERS ---------- */
+.container{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.pageContainer{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* ---------- HEADER ---------- */
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  border-bottom: 4px solid var(--accent);
+}
+
+.headerRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.logoBox{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoBox__img{
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+/* ---------- NAV ---------- */
+.nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.navBtn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  color: var(--text);
+  border: 1px solid transparent;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+  white-space: nowrap;
+}
+
+.navBtn:hover{
+  background: #f0f0f0;
+  border-color: #ededed;
+}
+
+.navBtn.isActive{
+  color: var(--accent);
+  background: var(--accentSoft);
+  border-color: rgba(212,0,0,0.22);
+}
+
+/* ---------- HERO (SLIDESHOW) ---------- */
+.teamHero{
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  background: #000; /* fallback if image missing */
+}
+
+/* Slideshow fills hero */
+.slideshow{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* IMPORTANT: stack slides & fade */
+.slide{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.slide.active{
+  opacity: 1;
+}
+
+/* Dark overlay above images */
+.teamHero__overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.18),
+    rgba(0,0,0,0.55)
+  );
+}
+
+/* Hero text */
+.teamHero__content{
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 46px 0;
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.teamHero__content h1{
+  margin: 0 0 10px;
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.teamHero__content p{
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.92;
+  max-width: 60ch;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* ---------- PAGE CONTENT ---------- */
 .pageContent{
   padding: 40px 0 64px;
 }
 
-.pageContainer{
-  width: min(1100px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-/* Headings */
 .pageContainer h1,
 .pageContainer h2{
   margin: 0 0 10px;
   color: var(--accent);
-  font-size: clamp(2rem, 3.2vw, 2.6rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1.15;
 }
 
 .introText{
   margin: 0 0 22px;
   color: var(--muted);
   font-size: 1.05rem;
-  max-width: 70ch;
+  max-width: 75ch;
 }
 
-/* Grid of cards */
+/* ---------- INFO GRID (Über uns Cards) ---------- */
 .infoGrid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -53,64 +212,65 @@ body{
   margin-top: 18px;
 }
 
-/* Card design */
 .infoCard{
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 16px 16px 14px;
+  box-shadow: var(--shadowSm);
+  padding: 16px;
 
   display: grid;
-  grid-template-columns: 42px 1fr;
+  grid-template-columns: 44px 1fr;
   column-gap: 12px;
   align-items: start;
 }
 
-/* Icon as a nice “badge” */
 .infoIcon{
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
   display: grid;
   place-items: center;
-  background: rgba(212,0,0,0.08);
+  background: var(--accentSoft);
   border: 1px solid rgba(212,0,0,0.18);
   font-size: 20px;
 }
 
-/* Card text */
-.infoCard h3{
-  margin: 2px 0 6px;
-  font-size: 1.05rem;
-  color: var(--text);
-  font-weight: 800;
-}
-
-.infoCard p{
-  margin: 0;
-  color: var(--muted);
-  font-weight: 600;
-  line-height: 1.45;
-}
-
-/* Make the text span full width (next to icon) */
+/* place text in second column */
 .infoCard h3,
 .infoCard p{
   grid-column: 2 / -1;
 }
 
-.smallMuted{
-  color: var(--muted);
-  font-size: 0.95rem;
-  font-weight: 600;
+.infoCard h3{
+  margin: 2px 0 6px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--text);
 }
 
-/* Responsive */
+.infoCard p{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.smallMuted{
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 0.95rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 1000px){
   .infoGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .teamHero{ min-height: 340px; }
+  .teamHero__content{ padding: 34px 0; }
 }
 
 @media (max-width: 560px){
   .infoGrid{ grid-template-columns: 1fr; }
+  .headerRow{ flex-direction: column; align-items: flex-start; }
+  .teamHero__content h1{ font-size: 2rem; }
 }
