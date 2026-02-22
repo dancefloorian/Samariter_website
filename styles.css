@@ -4,6 +4,7 @@
    + Added: Vorstand / Notfallnummern card styling
    + Added: Kurse page (hero, buttons, course cards, CTA, footer)
    + Added: Jungsamariter (tabs, panels, program table, nice lists)
+   + Added: Jahresprogramm (timeline cards + obligatory highlight + notes)
    + Compatibility: headerRow + header__inner, isActive + active
    ========================================================= */
 
@@ -62,17 +63,14 @@ body{
   border-bottom: 4px solid var(--accent);
 }
 
-/* Support BOTH versions used in your HTML:
-   - index.html:  .headerRow
-   - vorstand.html: .header__inner
-*/
+/* Support BOTH versions used in your HTML */
 .headerRow,
 .header__inner{
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 8px 0; /* slightly tighter so logo feels larger */
+  padding: 8px 0;
 }
 
 /* Logo area */
@@ -82,14 +80,13 @@ body{
   gap: 10px;
 }
 
-/* IMPORTANT: show the full logo and make it bigger */
+/* Logo */
 .logoBox__img{
   height: var(--logoH);
   width: auto;
   max-width: var(--logoMaxW);
-  object-fit: contain;     /* NO cropping */
+  object-fit: contain;
 
-  /* remove the “tiny icon in a box” look */
   border: none;
   border-radius: 0;
   padding: 0;
@@ -122,10 +119,6 @@ body{
   border-color: #ededed;
 }
 
-/* Support BOTH active class names:
-   - index.html: .isActive
-   - vorstand.html: .active
-*/
 .navBtn.isActive,
 .navBtn.active{
   color: var(--accent);
@@ -138,45 +131,34 @@ body{
   position: relative;
   min-height: 440px;
   overflow: hidden;
-  background: #000; /* fallback if image missing */
+  background: #000;
 }
 
-/* Slideshow fills hero */
 .slideshow{
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-/* stack slides & fade */
 .slide{
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-
   opacity: 0;
   transition: opacity 900ms ease;
 }
 
-.slide.active{
-  opacity: 1;
-}
+.slide.active{ opacity: 1; }
 
-/* Dark overlay above images */
 .teamHero__overlay{
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.18),
-    rgba(0,0,0,0.55)
-  );
+  background: linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.55));
 }
 
-/* Hero text */
 .teamHero__content{
   position: relative;
   z-index: 2;
@@ -206,11 +188,7 @@ body{
   padding: 40px 0 64px;
 }
 
-/* If you sometimes use <main class="pageContent">,
-   keep default spacing consistent */
-main.pageContent{
-  display: block;
-}
+main.pageContent{ display: block; }
 
 .pageContainer h1,
 .pageContainer h2{
@@ -220,9 +198,7 @@ main.pageContent{
   line-height: 1.15;
 }
 
-.pageContainer p{
-  margin: 0 0 18px;
-}
+.pageContainer p{ margin: 0 0 18px; }
 
 .introText{
   margin: 0 0 22px;
@@ -269,11 +245,8 @@ main.pageContent{
   font-size: 20px;
 }
 
-/* place text in second column */
 .infoCard h3,
-.infoCard p{
-  grid-column: 2 / -1;
-}
+.infoCard p{ grid-column: 2 / -1; }
 
 .infoCard h3{
   margin: 2px 0 6px;
@@ -301,7 +274,7 @@ main.pageContent{
 }
 
 /* =========================================================
-   VORSTAND / NOTFALLNUMMERN – nicer layout
+   VORSTAND / NOTFALLNUMMERN
    ========================================================= */
 .boardList,
 .emergencyList{
@@ -338,9 +311,7 @@ main.pageContent{
   color: rgba(0,0,0,0.78);
 }
 
-.emergencyNumber{
-  font-variant-numeric: tabular-nums;
-}
+.emergencyNumber{ font-variant-numeric: tabular-nums; }
 
 @media (hover:hover){
   .boardRow:hover,
@@ -351,7 +322,7 @@ main.pageContent{
 }
 
 /* =========================================================
-   KURSE PAGE – hero, buttons, course cards, CTA, footer
+   KURSE PAGE
    ========================================================= */
 .hero{
   background: linear-gradient(180deg, var(--accentSoft), rgba(255,255,255,0));
@@ -435,9 +406,7 @@ main.pageContent{
   font-weight: 900;
 }
 
-.section{
-  padding: 18px 0 56px;
-}
+.section{ padding: 18px 0 56px; }
 
 .sectionHeader{
   margin: 6px 0 18px;
@@ -595,7 +564,7 @@ main.pageContent{
 .muted{ color: var(--muted); }
 
 /* =========================================================
-   JUNGSAMARITER – nicer tabs + program table
+   JUNGSAMARITER
    ========================================================= */
 .tabs{
   display: flex;
@@ -701,6 +670,143 @@ main.pageContent{
 }
 
 /* =========================================================
+   JAHRESPROGRAMM – timeline cards + obligatory highlight
+   ========================================================= */
+.yearGrid{
+  display: grid;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.yearBlock{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadowSm);
+  overflow: hidden;
+}
+
+.yearBlock__head{
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--accentSoft), rgba(255,255,255,0));
+}
+
+.yearBlock__head h2{
+  margin: 0;
+  color: var(--text);
+  font-size: 1.35rem;
+}
+
+.timeline{
+  position: relative;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.timeline::before{
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: rgba(212,0,0,0.18);
+  border-radius: 2px;
+}
+
+.eventCard{
+  position: relative;
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 14px;
+
+  padding: 14px 14px 14px 54px;
+  border-radius: var(--radiusSm);
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.eventCard::before{
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 18px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(212,0,0,0.12);
+}
+
+.eventMeta{
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.eventDate{
+  font-weight: 950;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.eventTime{
+  font-weight: 800;
+  color: rgba(0,0,0,0.70);
+  font-variant-numeric: tabular-nums;
+}
+
+.eventTitle{
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.eventNote{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: var(--accentSoft);
+  border: 1px solid rgba(212,0,0,0.18);
+}
+
+/* Obligatory emphasis (used in Jahresprogramm HTML) */
+.obligatory{
+  font-weight: 950;
+  color: var(--text);
+}
+
+.yearNote{
+  padding: 0 16px 16px;
+}
+
+.yearNote p{
+  margin: 0;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+/* hover polish */
+@media (hover:hover){
+  .eventCard:hover{
+    background: rgba(212,0,0,0.06);
+    border-color: rgba(212,0,0,0.18);
+  }
+}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1000px){
@@ -722,6 +828,13 @@ main.pageContent{
   .contentGrid{ grid-template-columns: 1fr; }
   .programRow{ grid-template-columns: 1fr; gap: 6px; }
   .programWhere{ opacity: .85; }
+}
+
+@media (max-width: 720px){
+  .eventCard{ grid-template-columns: 1fr; }
+  .timeline::before{ left: 22px; }
+  .eventCard{ padding-left: 46px; }
+  .eventCard::before{ left: 15px; }
 }
 
 @media (max-width: 640px){
@@ -755,149 +868,4 @@ main.pageContent{
 
   .nav{ justify-content: flex-start; }
   .footerRow{ flex-direction: column; align-items: flex-start; }
-}
-
-
-/* =========================================================
-   JAHRESPROGRAMM – timeline cards
-   ========================================================= */
-
-.yearGrid{
-  display: grid;
-  gap: 16px;
-  margin-top: 10px;
-}
-
-.yearBlock{
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadowSm);
-  overflow: hidden;
-}
-
-.yearBlock__head{
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, var(--accentSoft), rgba(255,255,255,0));
-}
-
-.yearBlock__head h2{
-  margin: 0;
-  color: var(--text);
-  font-size: 1.35rem;
-}
-
-/* timeline container (left line) */
-.timeline{
-  position: relative;
-  padding: 16px;
-  display: grid;
-  gap: 12px;
-}
-
-.timeline::before{
-  content: "";
-  position: absolute;
-  left: 28px;
-  top: 16px;
-  bottom: 16px;
-  width: 2px;
-  background: rgba(212,0,0,0.18);
-  border-radius: 2px;
-}
-
-/* event card */
-.eventCard{
-  position: relative;
-  display: grid;
-  grid-template-columns: 190px 1fr;
-  gap: 14px;
-
-  padding: 14px 14px 14px 54px; /* space for dot + line */
-  border-radius: var(--radiusSm);
-  background: rgba(0,0,0,0.03);
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-/* dot */
-.eventCard::before{
-  content: "";
-  position: absolute;
-  left: 21px;
-  top: 18px;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(212,0,0,0.12);
-}
-
-/* left meta column */
-.eventMeta{
-  display: grid;
-  gap: 6px;
-  align-content: start;
-}
-
-.eventDate{
-  font-weight: 950;
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.eventTime{
-  font-weight: 800;
-  color: rgba(0,0,0,0.70);
-  font-variant-numeric: tabular-nums;
-}
-
-/* right body column */
-.eventTitle{
-  margin: 0 0 6px;
-  font-size: 1.1rem;
-  line-height: 1.25;
-}
-
-.eventNote{
-  margin: 0;
-  color: var(--muted);
-  font-weight: 650;
-}
-
-/* small “location” pill */
-.pill{
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-weight: 900;
-  font-size: 0.85rem;
-  color: var(--accent);
-  background: var(--accentSoft);
-  border: 1px solid rgba(212,0,0,0.18);
-}
-
-/* hover polish */
-@media (hover:hover){
-  .eventCard:hover{
-    background: rgba(212,0,0,0.06);
-    border-color: rgba(212,0,0,0.18);
-  }
-}
-
-/* responsive */
-@media (max-width: 720px){
-  .eventCard{
-    grid-template-columns: 1fr;
-  }
-  .timeline::before{
-    left: 22px;
-  }
-  .eventCard{
-    padding-left: 46px;
-  }
-  .eventCard::before{
-    left: 15px;
-  }
 }
