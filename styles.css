@@ -17,7 +17,7 @@
   --text: #1f1f1f;
   --muted: #666666;
 
-  /* Samariter Red */
+  /* Samariter Red (matches typical logo red) */
   --accent: #d40000;
   --accentSoft: rgba(212, 0, 0, 0.10);
 
@@ -28,11 +28,6 @@
   --shadowSm: 0 8px 18px rgba(0,0,0,0.08);
 
   --container: 1100px;
-
-  /* Header sizing */
-  --headerPadY: 12px;
-  --logoH: 70px;          /* controls visible logo height */
-  --logoMaxW: 220px;      /* prevents overly-wide logo */
 }
 
 /* ---------- BASE / RESET ---------- */
@@ -49,7 +44,11 @@ body{
 }
 
 /* ---------- LAYOUT HELPERS ---------- */
-.container,
+.container{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
+
 .pageContainer{
   width: min(var(--container), calc(100% - 32px));
   margin: 0 auto;
@@ -69,30 +68,21 @@ body{
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: var(--headerPadY) 0;
+  padding: 12px 0;
 }
 
-/* LOGO: show full logo (no cropping) */
 .logoBox{
   display: flex;
   align-items: center;
   gap: 10px;
-
-  /* Makes logo height predictable */
-  height: var(--logoH);
 }
 
 .logoBox__img{
-  height: 100%;
-  width: auto;
-  max-height: var(--logoH);
-  max-width: var(--logoMaxW);
-  object-fit: contain;     /* IMPORTANT: never crop the logo */
-
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
   border-radius: 12px;
   border: 1px solid var(--line);
-  background: #fff;        /* helps if logo has transparency */
-  padding: 6px;            /* gives breathing room inside border */
 }
 
 /* ---------- NAV ---------- */
@@ -100,9 +90,6 @@ body{
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-
-  /* Helps keep nav on the right when there is room */
-  justify-content: flex-end;
 }
 
 .navBtn{
@@ -144,7 +131,7 @@ body{
   z-index: 0;
 }
 
-/* Stack slides & fade */
+/* IMPORTANT: stack slides & fade */
 .slide{
   position: absolute;
   inset: 0;
@@ -280,24 +267,10 @@ body{
   .infoGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .teamHero{ min-height: 340px; }
   .teamHero__content{ padding: 34px 0; }
-
-  /* Slightly smaller logo on medium screens */
-  :root{
-    --logoH: 62px;
-    --logoMaxW: 200px;
-  }
 }
 
 @media (max-width: 560px){
   .infoGrid{ grid-template-columns: 1fr; }
   .headerRow{ flex-direction: column; align-items: flex-start; }
   .teamHero__content h1{ font-size: 2rem; }
-
-  /* Slightly smaller logo on small screens */
-  :root{
-    --logoH: 56px;
-    --logoMaxW: 190px;
-  }
-
-  .nav{ justify-content: flex-start; }
 }
