@@ -1,6 +1,8 @@
 /* =========================================================
    Samariterverein – styles.css (Red/Logo-matching theme)
    Updated: Logo is now clearly visible (no crop, no tiny boxed look)
+   + Added: Vorstand / Notfallnummern card styling
+   + Compatibility: headerRow + header__inner, isActive + active
    ========================================================= */
 
 /* ---------- THEME ---------- */
@@ -58,7 +60,12 @@ body{
   border-bottom: 4px solid var(--accent);
 }
 
-.headerRow{
+/* Support BOTH versions used in your HTML:
+   - index.html:  .headerRow
+   - vorstand.html: .header__inner
+*/
+.headerRow,
+.header__inner{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -113,7 +120,12 @@ body{
   border-color: #ededed;
 }
 
-.navBtn.isActive{
+/* Support BOTH active class names:
+   - index.html: .isActive
+   - vorstand.html: .active
+*/
+.navBtn.isActive,
+.navBtn.active{
   color: var(--accent);
   background: var(--accentSoft);
   border-color: rgba(212,0,0,0.22);
@@ -192,12 +204,22 @@ body{
   padding: 40px 0 64px;
 }
 
+/* If you sometimes use <main class="pageContent">,
+   keep default spacing consistent */
+main.pageContent{
+  display: block;
+}
+
 .pageContainer h1,
 .pageContainer h2{
   margin: 0 0 10px;
   color: var(--accent);
   font-size: clamp(2rem, 3vw, 2.6rem);
   line-height: 1.15;
+}
+
+.pageContainer p{
+  margin: 0 0 18px;
 }
 
 .introText{
@@ -265,7 +287,75 @@ body{
   font-size: 0.95rem;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* =========================================================
+   VORSTAND / NOTFALLNUMMERN – nicer layout
+   ========================================================= */
+
+/* shared card wrapper used on vorstand.html */
+.contentCard{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadowSm);
+  padding: 16px;
+}
+
+/* list containers */
+.boardList,
+.emergencyList{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* each row */
+.boardRow,
+.emergencyRow{
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 14px;
+  align-items: center;
+
+  padding: 12px 12px;
+  border-radius: var(--radiusSm);
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* left column */
+.boardRole,
+.emergencyName{
+  font-weight: 900;
+  letter-spacing: .15px;
+  color: var(--text);
+}
+
+/* right column */
+.boardName,
+.emergencyNumber{
+  text-align: right;
+  font-weight: 700;
+  color: rgba(0,0,0,0.78);
+}
+
+/* make emergency numbers extra readable */
+.emergencyNumber{
+  font-variant-numeric: tabular-nums;
+}
+
+/* subtle hover (desktop) */
+@media (hover:hover){
+  .boardRow:hover,
+  .emergencyRow:hover{
+    border-color: rgba(212,0,0,0.18);
+    background: rgba(212,0,0,0.06);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 @media (max-width: 1000px){
   .infoGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .teamHero{ min-height: 340px; }
@@ -277,9 +367,29 @@ body{
   }
 }
 
+@media (max-width: 640px){
+  .boardRow,
+  .emergencyRow{
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .boardName,
+  .emergencyNumber{
+    text-align: left;
+  }
+}
+
 @media (max-width: 560px){
   .infoGrid{ grid-template-columns: 1fr; }
-  .headerRow{ flex-direction: column; align-items: flex-start; }
+
+  /* support both header inner class names */
+  .headerRow,
+  .header__inner{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .teamHero__content h1{ font-size: 2rem; }
 
   :root{
