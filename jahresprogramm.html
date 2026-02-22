@@ -11,11 +11,11 @@
 
 <body>
 
+  <!-- HEADER (consistent with the rest of the site) -->
   <header class="header">
-    <div class="container header__inner">
-
+    <div class="container headerRow">
       <div class="logoBox">
-        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img">
+        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img" />
       </div>
 
       <nav class="nav">
@@ -25,9 +25,8 @@
         <a class="navBtn" href="kurse.html">Kurse</a>
         <a class="navBtn" href="jungsamariter.html">Jungsamariter</a>
         <a class="navBtn" href="links.html">Links</a>
-        <a class="navBtn active" href="jahresprogramm.html">Jahresprogramm</a>
+        <a class="navBtn isActive" href="jahresprogramm.html">Jahresprogramm</a>
       </nav>
-
     </div>
   </header>
 
@@ -35,122 +34,195 @@
     <section class="pageContainer">
 
       <h1>Jahresprogramm 2026</h1>
-      <p class="introText">Vereinsübungen jeweils <strong>19:30 bis 21:00 Uhr</strong>.</p>
+      <p class="introText">
+        Vereinsübungen jeweils <strong>19:30 bis 21:00 Uhr</strong>.
+      </p>
 
-      <!-- Vereinsübungen -->
-      <div class="contentCard">
-        <h3>Vereinsübungen</h3>
+      <div class="yearGrid">
 
-        <div class="programTable">
-
-          <div class="programRow">
-            <div>Do. 19. Februar</div>
-            <div></div>
-            <div><span class="obligatory">«Helm ab»</span></div>
+        <!-- Vereinsübungen -->
+        <section class="yearBlock">
+          <div class="yearBlock__head">
+            <h2>Vereinsübungen</h2>
           </div>
 
-          <div class="programRow">
-            <div>Mi. 11. März / Do. 19. März</div>
-            <div>Lenzerheide</div>
-            <div>Regionalvortrag «Kindernotfall» / Unfall</div>
+          <div class="timeline">
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Do. 19. Februar</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle"><span class="obligatory">«Helm ab»</span></h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Mi. 11. März / Do. 19. März</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">Regionalvortrag «Kindernotfall» / Unfall</h3>
+                <p class="eventNote"><span class="pill">Lenzerheide</span></p>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Do. 16. April</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle"><span class="obligatory">Psychischer Notfall</span></h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Do. 21. Mai</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle"><span class="obligatory">Bergungsarten</span></h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Do. 20. August</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle"><span class="obligatory">Herzinfarkt und Schlaganfall</span></h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Mo. 14. September</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">Regionalübung</h3>
+                <p class="eventNote"><span class="pill">Bonaduz</span></p>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Do. 22. Oktober</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle"><span class="obligatory">Sauerstoffabgabe (Dr. Thomas Rothe)</span></h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Do. 17. November</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">«Klaushock»</h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">Fr. 05. Februar (GV 2027)</div>
+                <div class="eventTime">19:30–21:00</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">Generalversammlung</h3>
+              </div>
+            </article>
+
           </div>
 
-          <div class="programRow">
-            <div>Do. 16. April</div>
-            <div></div>
-            <div><span class="obligatory">Psychischer Notfall</span></div>
+          <div class="yearNote">
+            <p>
+              <strong>Hinweis:</strong> Die fettgedruckten Übungen sind für die IVR2 obligatorisch.
+              Die Feuerwehrgruppe sollte 3 der obligatorischen Übungen besuchen!
+            </p>
+          </div>
+        </section>
+
+        <!-- Kurswesen -->
+        <section class="yearBlock">
+          <div class="yearBlock__head">
+            <h2>Kurswesen 2026</h2>
           </div>
 
-          <div class="programRow">
-            <div>Do. 21. Mai</div>
-            <div></div>
-            <div><span class="obligatory">Bergungsarten</span></div>
+          <div class="timeline">
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">9./16. Mai</div>
+                <div class="eventTime">—</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">First Responder refresher</h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">15. Juni</div>
+                <div class="eventTime">—</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">BLS/AED</h3>
+                <p class="eventNote"><span class="pill">Zahnarztpraxis Liv Vitan</span></p>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Gemütlicher Teil -->
+        <section class="yearBlock">
+          <div class="yearBlock__head">
+            <h2>Gemütlicher Teil</h2>
           </div>
 
-          <div class="programRow">
-            <div>Do. 20. August</div>
-            <div></div>
-            <div><span class="obligatory">Herzinfarkt und Schlaganfall</span></div>
+          <div class="timeline">
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">6. Juni</div>
+                <div class="eventTime">—</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">Ausflug mit Helpgruppe zusammen</h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">29. August</div>
+                <div class="eventTime">—</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">Vereinsausflug mit Partner/in</h3>
+              </div>
+            </article>
+
+            <article class="eventCard">
+              <div class="eventMeta">
+                <div class="eventDate">17. November</div>
+                <div class="eventTime">—</div>
+              </div>
+              <div class="eventBody">
+                <h3 class="eventTitle">Klaushock</h3>
+              </div>
+            </article>
+
           </div>
+        </section>
 
-          <div class="programRow">
-            <div>Mo. 14. September</div>
-            <div>Bonaduz</div>
-            <div>Regionalübung</div>
-          </div>
-
-          <div class="programRow">
-            <div>Do. 22. Oktober</div>
-            <div></div>
-            <div><span class="obligatory">Sauerstoffabgabe (Dr. Thomas Rothe)</span></div>
-          </div>
-
-          <div class="programRow">
-            <div>Do. 17. November</div>
-            <div></div>
-            <div>«Klaushock»</div>
-          </div>
-
-          <div class="programRow">
-            <div>Fr. 05. Februar (GV 2027)</div>
-            <div></div>
-            <div>Generalversammlung</div>
-          </div>
-
-        </div>
-
-        <p style="margin-top:14px;">
-          <strong>Hinweis:</strong> Die fettgedruckten Übungen sind für die IVR2 obligatorisch.
-          Die Feuerwehrgruppe sollte 3 der obligatorischen Übungen besuchen!
-        </p>
-      </div>
-
-      <!-- Kurswesen -->
-      <div class="contentCard">
-        <h3>Kurswesen 2026</h3>
-
-        <div class="programTable">
-
-          <div class="programRow">
-            <div>9./16. Mai</div>
-            <div></div>
-            <div>First Responder refresher</div>
-          </div>
-
-          <div class="programRow">
-            <div>15. Juni</div>
-            <div>Zahnarztpraxis Liv Vitan</div>
-            <div>BLS/AED</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Gemütlicher Teil -->
-      <div class="contentCard">
-        <h3>Gemütlicher Teil</h3>
-
-        <div class="programTable">
-
-          <div class="programRow">
-            <div>6. Juni</div>
-            <div></div>
-            <div>Ausflug mit Helpgruppe zusammen</div>
-          </div>
-
-          <div class="programRow">
-            <div>29. August</div>
-            <div></div>
-            <div>Vereinsausflug mit Partner/in</div>
-          </div>
-
-          <div class="programRow">
-            <div>17. November</div>
-            <div></div>
-            <div>Klaushock</div>
-          </div>
-
-        </div>
       </div>
 
     </section>
