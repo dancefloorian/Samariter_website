@@ -11,11 +11,11 @@
 
 <body>
 
+  <!-- HEADER (matches your other pages) -->
   <header class="header">
-    <div class="container header__inner">
-
+    <div class="container headerRow">
       <div class="logoBox">
-        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img">
+        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img" />
       </div>
 
       <nav class="nav">
@@ -23,78 +23,87 @@
         <a class="navBtn" href="vorstand.html">Vorstand</a>
         <a class="navBtn" href="kontakt.html">Kontakt</a>
         <a class="navBtn" href="kurse.html">Kurse</a>
-        <a class="navBtn active" href="jungsamariter.html">Jungsamariter</a>
+        <a class="navBtn isActive" href="jungsamariter.html">Jungsamariter</a>
         <a class="navBtn" href="links.html">Links</a>
         <a class="navBtn" href="jahresprogramm.html">Jahresprogramm</a>
       </nav>
-
     </div>
   </header>
 
+  <!-- PAGE -->
   <main class="pageContent">
     <section class="pageContainer">
 
       <h1>Jungsamariter</h1>
 
-      <!-- TAB BUTTONS -->
-      <div class="tabButtons">
-        <button type="button" class="tabBtn active" data-tab="info">Allgemein</button>
-        <button type="button" class="tabBtn" data-tab="programm">Jahresprogramm 2026</button>
+      <p class="introText">
+        Die Helpgruppe Sils i.D. und Region – spielerisch Nothilfe lernen und gemeinsam wachsen.
+      </p>
+
+      <!-- TABS (nicer “pill” tabs) -->
+      <div class="tabs" role="tablist" aria-label="Jungsamariter Tabs">
+        <button type="button" class="tabBtn isActive" data-tab="info" role="tab" aria-selected="true">
+          Allgemein
+        </button>
+        <button type="button" class="tabBtn" data-tab="programm" role="tab" aria-selected="false">
+          Jahresprogramm 2026
+        </button>
       </div>
 
       <!-- INFO TAB -->
-      <div id="info" class="tabContent active">
+      <div id="info" class="tabPanel isActive" role="tabpanel">
 
-        <p class="introText">
-          Die Helpgruppe Sils i.D. und Region – spielerisch Nothilfe lernen und gemeinsam wachsen.
-        </p>
+        <div class="contentGrid">
+          <div class="contentCard">
+            <h3>Entstehung</h3>
+            <p>
+              Am 1. September 2004 folgten 50 Kinder aus Sils i.D. und der Region dem Aufruf des
+              Samaritervereins (SV), eine Helpgruppe zu gründen. Initiantin war Frieda Kunz, Präsidentin
+              des SV Sils i.D.
+            </p>
+            <p>
+              Auch zweieinhalb Jahre nach dem „Startschuss“ waren noch immer 47 sogenannte „Helpis“ aktiv.
+              Als Helpis bezeichnet man Jungsamariter, die einmal pro Monat stufengerecht und spielerisch
+              dieselben fachtechnischen Grundbegriffe der Nothilfe erlernen wie Erwachsene.
+            </p>
+          </div>
 
-        <div class="contentCard">
-          <h3>Entstehung</h3>
-          <p>
-            Am 1. September 2004 folgten 50 Kinder aus Sils i.D. und der Region dem Aufruf des Samaritervereins (SV),
-            eine Helpgruppe zu gründen. Initiantin war Frieda Kunz, Präsidentin des SV Sils i.D.
-          </p>
-          <p>
-            Auch zweieinhalb Jahre nach dem „Startschuss“ waren noch immer 47 sogenannte „Helpis“ aktiv.
-            Als Helpis bezeichnet man Jungsamariter, die einmal pro Monat stufengerecht und spielerisch
-            dieselben fachtechnischen Grundbegriffe der Nothilfe erlernen wie Erwachsene.
-          </p>
-        </div>
+          <div class="contentCard">
+            <h3>Organisation</h3>
+            <ul class="niceList">
+              <li>In Graubünden gibt es drei Helpgruppen (schweizweit 97).</li>
+              <li>In Sils i.D. sind die Kinder in zwei Gruppen unterteilt.</li>
+              <li>Übung: einmal pro Monat, jeweils an einem Mittwochnachmittag.</li>
+              <li>Das Jahresprogramm wird von den Kurs-/Technischen Leiterinnen zusammengestellt.</li>
+            </ul>
+          </div>
 
-        <div class="contentCard">
-          <h3>Organisation</h3>
-          <ul>
-            <li>In Graubünden gibt es drei Helpgruppen (schweizweit 97).</li>
-            <li>In Sils i.D. sind die Kinder in zwei Gruppen unterteilt.</li>
-            <li>Die Übung findet einmal im Monat statt, jeweils an einem Mittwochnachmittag.</li>
-            <li>Das Jahresprogramm wird von den Kurs-/Technischen Leiterinnen zusammengestellt.</li>
-          </ul>
-        </div>
+          <div class="contentCard">
+            <h3>Leitung & Betreuung</h3>
+            <ul class="niceList">
+              <li>2 Kurs- und Technische Leiterinnen</li>
+              <li>4 Samariter</li>
+              <li>3 Jungleiter</li>
+            </ul>
+            <p style="margin-top:12px;">
+              <strong>Teamleitung:</strong> Heidi Künzler / 077 497 64 11<br />
+              <span class="smallMuted">(siehe Mitgliederliste)</span>
+            </p>
+          </div>
 
-        <div class="contentCard">
-          <h3>Leitung & Betreuung</h3>
-          <ul>
-            <li>2 Kurs- und Technische Leiterinnen</li>
-            <li>4 Samariter</li>
-            <li>3 Jungleiter</li>
-          </ul>
-          <p><strong>Teamleitung:</strong> Heidi Künzler / 077 497 64 11</p>
-          <p>(siehe Mitgliederliste)</p>
-        </div>
-
-        <div class="contentCard">
-          <h3>Teil des Samaritervereins</h3>
-          <p>
-            Die Helpgruppe Sils i.D. und Region ist das jüngste Mitglied des Samaritervereins und gehört
-            statuarisch seit Januar 2006 zum Samariterverein Sils i.D.
-          </p>
+          <div class="contentCard">
+            <h3>Teil des Samaritervereins</h3>
+            <p>
+              Die Helpgruppe Sils i.D. und Region ist das jüngste Mitglied des Samaritervereins und gehört
+              statutarisch seit Januar 2006 zum Samariterverein Sils i.D.
+            </p>
+          </div>
         </div>
 
       </div>
 
       <!-- PROGRAM TAB -->
-      <div id="programm" class="tabContent">
+      <div id="programm" class="tabPanel" role="tabpanel">
 
         <h2 class="tabHeading">Jahresprogramm 2026</h2>
 
@@ -102,68 +111,68 @@
           <div class="programTable">
 
             <div class="programRow">
-              <div>18. Februar<br>17:30–19:00</div>
-              <div>Palazzo</div>
-              <div>„Heimlich Manöver“</div>
+              <div class="programWhen">18. Februar<br><span class="smallMuted">17:30–19:00</span></div>
+              <div class="programWhere">Palazzo</div>
+              <div class="programWhat">„Heimlich Manöver“</div>
             </div>
 
             <div class="programRow">
-              <div>18. März<br>17:30–19:00</div>
-              <div>Palazzo</div>
-              <div>Wundversorgung</div>
+              <div class="programWhen">18. März<br><span class="smallMuted">17:30–19:00</span></div>
+              <div class="programWhere">Palazzo</div>
+              <div class="programWhat">Wundversorgung</div>
             </div>
 
             <div class="programRow">
-              <div>15. April<br>17:30–19:00</div>
-              <div>Palazzo</div>
-              <div>Herz und Lunge</div>
+              <div class="programWhen">15. April<br><span class="smallMuted">17:30–19:00</span></div>
+              <div class="programWhere">Palazzo</div>
+              <div class="programWhat">Herz und Lunge</div>
             </div>
 
             <div class="programRow">
-              <div>20. Mai<br>17:30–19:00</div>
-              <div>Palazzo</div>
-              <div>Sonnenbrand und Co.</div>
+              <div class="programWhen">20. Mai<br><span class="smallMuted">17:30–19:00</span></div>
+              <div class="programWhere">Palazzo</div>
+              <div class="programWhat">Sonnenbrand und Co.</div>
             </div>
 
             <div class="programRow">
-              <div>Sam. 6. Juni<br>-</div>
-              <div>?</div>
-              <div>Ausflug</div>
+              <div class="programWhen">Sa. 6. Juni<br><span class="smallMuted">–</span></div>
+              <div class="programWhere">?</div>
+              <div class="programWhat">Ausflug</div>
+            </div>
+
+            <div class="programRow isMutedRow">
+              <div class="programWhen">Sommerpause</div>
+              <div class="programWhere"></div>
+              <div class="programWhat"></div>
             </div>
 
             <div class="programRow">
-              <div>Sommerpause</div>
-              <div></div>
-              <div></div>
+              <div class="programWhen">26. August<br><span class="smallMuted">17:30–19:00</span></div>
+              <div class="programWhere">Palazzo</div>
+              <div class="programWhat">Bergungsarten</div>
             </div>
 
             <div class="programRow">
-              <div>26. August<br>17:30–19:00</div>
-              <div>Palazzo</div>
-              <div>Bergungsarten</div>
+              <div class="programWhen">16. September<br><span class="smallMuted">17:30–19:00</span></div>
+              <div class="programWhere">Palazzo</div>
+              <div class="programWhat">Postenlauf</div>
             </div>
 
             <div class="programRow">
-              <div>16. September<br>17:30–19:00</div>
-              <div>Palazzo</div>
-              <div>Postenlauf</div>
+              <div class="programWhen">28. Oktober<br><span class="smallMuted">17:30–19:00</span></div>
+              <div class="programWhere">Palazzo</div>
+              <div class="programWhat">„Knochenjob“</div>
             </div>
 
             <div class="programRow">
-              <div>28. Oktober<br>17:30–19:00</div>
-              <div>Palazzo</div>
-              <div>„Knochenjob“</div>
-            </div>
-
-            <div class="programRow">
-              <div>18. November<br>-</div>
-              <div>?</div>
-              <div>Überraschung</div>
+              <div class="programWhen">18. November<br><span class="smallMuted">–</span></div>
+              <div class="programWhere">?</div>
+              <div class="programWhat">Überraschung</div>
             </div>
 
           </div>
 
-          <p style="margin-top:15px;">
+          <p class="smallMuted" style="margin-top:14px;">
             Änderungen des Jahresprogramms sind möglich.
           </p>
         </div>
@@ -173,20 +182,27 @@
     </section>
   </main>
 
-  <!-- TAB SWITCH JS -->
+  <!-- TAB SWITCH JS (safer + accessible attributes) -->
   <script>
-    const tabButtons = document.querySelectorAll(".tabBtn");
-    const tabContents = document.querySelectorAll(".tabContent");
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabButtons = document.querySelectorAll(".tabBtn");
+      const tabPanels  = document.querySelectorAll(".tabPanel");
 
-    tabButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const targetId = btn.getAttribute("data-tab");
+      function activateTab(targetId) {
+        tabButtons.forEach(btn => {
+          const isOn = btn.getAttribute("data-tab") === targetId;
+          btn.classList.toggle("isActive", isOn);
+          btn.setAttribute("aria-selected", isOn ? "true" : "false");
+        });
 
-        tabButtons.forEach(b => b.classList.remove("active"));
-        tabContents.forEach(c => c.classList.remove("active"));
+        tabPanels.forEach(panel => {
+          const isOn = panel.id === targetId;
+          panel.classList.toggle("isActive", isOn);
+        });
+      }
 
-        btn.classList.add("active");
-        document.getElementById(targetId).classList.add("active");
+      tabButtons.forEach(btn => {
+        btn.addEventListener("click", () => activateTab(btn.getAttribute("data-tab")));
       });
     });
   </script>
