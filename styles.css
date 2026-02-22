@@ -2,6 +2,7 @@
    Samariterverein – styles.css (Red/Logo-matching theme)
    Updated: Logo is now clearly visible (no crop, no tiny boxed look)
    + Added: Vorstand / Notfallnummern card styling
+   + Added: Kurse page (hero, buttons, course cards, CTA, footer)
    + Compatibility: headerRow + header__inner, isActive + active
    ========================================================= */
 
@@ -354,6 +355,251 @@ main.pageContent{
 }
 
 /* =========================================================
+   KURSE PAGE – hero, buttons, course cards, CTA, footer
+   ========================================================= */
+
+.hero{
+  background: linear-gradient(180deg, var(--accentSoft), rgba(255,255,255,0));
+  padding: 42px 0 26px;
+}
+
+.heroGrid{
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.heroText h1{
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: clamp(2.2rem, 3.6vw, 3rem);
+  line-height: 1.1;
+}
+
+.lead{
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 62ch;
+}
+
+.heroActions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.heroCard{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadowSm);
+  padding: 16px;
+}
+
+.heroCard h2{
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.heroCard p{
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.checkList{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.checkList li{
+  position: relative;
+  padding-left: 28px;
+  font-weight: 700;
+  color: rgba(0,0,0,.78);
+}
+
+.checkList li::before{
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  background: var(--accentSoft);
+  border: 1px solid rgba(212,0,0,0.18);
+  font-weight: 900;
+}
+
+.section{
+  padding: 18px 0 56px;
+}
+
+.sectionHeader{
+  margin: 6px 0 18px;
+  max-width: 80ch;
+}
+
+.sectionHeader h2{
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+  line-height: 1.15;
+}
+
+.sectionHeader p{
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  border: 1px solid transparent;
+  transition: transform 120ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+  user-select: none;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.btnPrimary{
+  background: var(--accent);
+  color: #fff;
+  border-color: rgba(212,0,0,0.35);
+  box-shadow: 0 10px 22px rgba(212,0,0,0.18);
+}
+
+.btnPrimary:hover{ filter: brightness(0.96); }
+
+.btnGhost{
+  background: #fff;
+  color: var(--accent);
+  border-color: rgba(212,0,0,0.28);
+}
+
+.btnGhost:hover{ background: var(--accentSoft); }
+
+.btnLink{
+  background: transparent;
+  color: var(--accent);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.btnLink:hover{ text-decoration: underline; }
+
+/* Course cards */
+.cards{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.courseCard{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadowSm);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.courseCard h3{
+  margin: 10px 0 8px;
+  font-size: 1.2rem;
+}
+
+.courseCard p{
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.badge{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: var(--accent);
+  background: var(--accentSoft);
+  border: 1px solid rgba(212,0,0,0.18);
+}
+
+.badgeAlt{
+  color: #1f1f1f;
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.08);
+}
+
+.cardActions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+/* CTA */
+.cta{
+  margin-top: 18px;
+  background: #fff;
+  border: 1px solid rgba(212,0,0,0.20);
+  border-radius: var(--radius);
+  box-shadow: var(--shadowSm);
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.cta h3{
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.cta p{
+  margin: 0;
+  color: var(--muted);
+  max-width: 80ch;
+}
+
+/* Footer */
+.footer{
+  border-top: 1px solid var(--line);
+  background: #fff;
+  padding: 18px 0;
+}
+
+.footerRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.muted{ color: var(--muted); }
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1000px){
@@ -365,6 +611,12 @@ main.pageContent{
     --logoH: 78px;
     --logoMaxW: 240px;
   }
+}
+
+@media (max-width: 900px){
+  .heroGrid{ grid-template-columns: 1fr; }
+  .cards{ grid-template-columns: 1fr; }
+  .cta{ flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 640px){
@@ -398,4 +650,5 @@ main.pageContent{
   }
 
   .nav{ justify-content: flex-start; }
+  .footerRow{ flex-direction: column; align-items: flex-start; }
 }
