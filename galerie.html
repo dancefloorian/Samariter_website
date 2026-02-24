@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galerie | Samariterverein Sils im Domleschg</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container headerRow">
+
+      <div class="logoBox">
+        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img" />
+      </div>
+
+      <nav class="nav">
+        <a class="navBtn" href="index.html">Home</a>
+        <a class="navBtn" href="vorstand.html">Vorstand</a>
+        <a class="navBtn" href="kontakt.html">Kontakt</a>
+        <a class="navBtn" href="kurse.html">Kurse</a>
+        <a class="navBtn" href="jungsamariter.html">Jungsamariter</a>
+        <a class="navBtn" href="links.html">Links</a>
+        <a class="navBtn" href="jahresprogramm.html">Jahresprogramm</a>
+        <a class="navBtn isActive" href="galerie.html">Galerie</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="pageContent">
+    <section class="pageContainer">
+
+      <h1>Galerie</h1>
+      <p class="introText">
+        Eindrücke aus früheren Jahren – einfach anklicken, um ein Bild zu vergrössern.
+      </p>
+
+      <!-- Optional: you can group by year -->
+      <div class="gallerySection">
+        <h2 class="galleryHeading">Archiv</h2>
+
+        <div class="galleryGrid">
+          <!-- Replace src paths with your real images -->
+          <figure class="galleryItem">
+            <img src="images/galerie_1.jpg" alt="Galerie Bild 1" loading="lazy" />
+            <figcaption>Sommerhöck (Beispiel)</figcaption>
+          </figure>
+
+          <figure class="galleryItem">
+            <img src="images/galerie_2.jpg" alt="Galerie Bild 2" loading="lazy" />
+            <figcaption>Übung / Kurs (Beispiel)</figcaption>
+          </figure>
+
+          <figure class="galleryItem">
+            <img src="images/galerie_3.jpg" alt="Galerie Bild 3" loading="lazy" />
+            <figcaption>Vereinsausflug (Beispiel)</figcaption>
+          </figure>
+
+          <figure class="galleryItem">
+            <img src="images/galerie_4.jpg" alt="Galerie Bild 4" loading="lazy" />
+            <figcaption>Historisches Foto (Beispiel)</figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightboxClose" id="lightboxClose" type="button" aria-label="Schliessen">×</button>
+    <img class="lightboxImg" id="lightboxImg" alt="" />
+    <p class="lightboxCaption" id="lightboxCaption"></p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".galleryItem img");
+      const lb = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lightboxImg");
+      const lbCap = document.getElementById("lightboxCaption");
+      const lbClose = document.getElementById("lightboxClose");
+
+      function openLightbox(img){
+        lbImg.src = img.src;
+        lbImg.alt = img.alt || "";
+        const cap = img.closest("figure")?.querySelector("figcaption")?.textContent || "";
+        lbCap.textContent = cap;
+
+        lb.classList.add("isOpen");
+        lb.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox(){
+        lb.classList.remove("isOpen");
+        lb.setAttribute("aria-hidden", "true");
+        lbImg.src = "";
+        lbCap.textContent = "";
+        document.body.style.overflow = "";
+      }
+
+      items.forEach(img => img.addEventListener("click", () => openLightbox(img)));
+
+      lb.addEventListener("click", (e) => {
+        if (e.target === lb) closeLightbox();
+      });
+
+      lbClose.addEventListener("click", closeLightbox);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+      });
+    });
+  </script>
+
+</body>
+</html>
