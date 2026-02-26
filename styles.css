@@ -662,7 +662,7 @@ main.pageContent{ display: block; }
 .yearHero{
   position: relative;
   min-height: 320px;
-  background: url("images/jahresprogramm.jpg") center / cover no-repeat;
+  background: url("images/samariter_rucksack.jpg") center / cover no-repeat;
   display: flex;
   align-items: flex-end;
 }
