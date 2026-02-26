@@ -118,7 +118,7 @@ body{
   border-color: rgba(212,0,0,0.22);
 }
 
-/* ---------- HERO (HOME SLIDESHOW) ---------- */
+/* ---------- HERO (HOME SINGLE IMAGE) ---------- */
 .teamHero{
   position: relative;
   min-height: 440px;
@@ -126,23 +126,21 @@ body{
   background: #000;
 }
 
-.slideshow{
+/* single hero image wrapper (replaces slideshow) */
+.heroImage{
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.slide{
-  position: absolute;
-  inset: 0;
+/* IMPORTANT: contain = no zoom / no crop */
+.heroImage img{
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 900ms ease;
+  object-fit: contain;      /* <-- no zoom */
+  object-position: center;  /* keep centered */
+  display: block;
 }
-
-.slide.active{ opacity: 1; }
 
 .teamHero__overlay{
   position: absolute;
