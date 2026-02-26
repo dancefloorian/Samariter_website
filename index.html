@@ -39,10 +39,10 @@
 <!-- HERO WITH SLIDESHOW -->
 <section class="teamHero">
 
-  <div class="slideshow" id="slideshow">
-    <img src="images/sils.jpg" alt="" class="slide active">
-    <img src="images/samariter_leute_hinten.jpg" alt="" class="slide">
-    <img src="images/samariter_rucksack.jpg" alt="" class="slide">
+<section class="teamHero">
+
+  <div class="heroImage">
+    <img src="images/sils.jpg" alt="Sils im Domleschg">
   </div>
 
   <div class="teamHero__overlay"></div>
@@ -118,21 +118,6 @@
 
 </main>
 
-<!-- SLIDESHOW SCRIPT -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".slide");
-  if (!slides.length) return;
-
-  let current = 0;
-
-  setInterval(() => {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
-  }, 5000);
-});
-</script>
 
 </body>
 </html>
