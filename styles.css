@@ -118,69 +118,49 @@ body{
   border-color: rgba(212,0,0,0.22);
 }
 
-/* ---------- HERO (HOME SINGLE IMAGE FIXED) ---------- */
+/* ---------- HERO (HOME – SINGLE IMAGE LIKE BEFORE) ---------- */
 .teamHero{
   position: relative;
+  min-height: 440px;
+  overflow: hidden;
   background: #000;
 }
 
-/* Let the image define the height naturally */
 .heroImage{
-  width: 100%;
-  line-height: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
 .heroImage img{
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;          /* keeps natural ratio */
-  display: block;
+  height: 100%;
+  object-fit: cover;     /* <-- WICHTIG: wie vorher */
+  object-position: center;
 }
 
-/* Keep overlay and text positioned over image */
+/* Overlay bleibt wie vorher */
 .teamHero__overlay{
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.18),
     rgba(0,0,0,0.55)
   );
 }
 
+/* Text wie vorher */
 .teamHero__content{
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 2;
   color: #fff;
-}
-
-/* ---------- PAGE CONTENT ---------- */
-.pageContent{ padding: 40px 0 64px; }
-main.pageContent{ display: block; }
-
-.pageContainer h1,
-.pageContainer h2{
-  margin: 0 0 10px;
-  color: var(--accent);
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  line-height: 1.15;
-}
-
-.pageContainer p{ margin: 0 0 18px; }
-
-.introText{
-  margin: 0 0 22px;
-  color: var(--muted);
-  font-size: 1.05rem;
-  max-width: 75ch;
-}
-
-.smallMuted{
-  color: var(--muted);
-  font-weight: 650;
-  font-size: 0.95rem;
+  padding: 46px 0;
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
 }
 
 /* ---------- INFO GRID (HOME "Über uns") ---------- */
