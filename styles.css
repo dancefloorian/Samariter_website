@@ -118,63 +118,42 @@ body{
   border-color: rgba(212,0,0,0.22);
 }
 
-/* ---------- HERO (HOME SINGLE IMAGE) ---------- */
+/* ---------- HERO (HOME SINGLE IMAGE FIXED) ---------- */
 .teamHero{
   position: relative;
-  min-height: 440px;
-  overflow: hidden;
   background: #000;
 }
 
-/* single hero image wrapper (replaces slideshow) */
+/* Let the image define the height naturally */
 .heroImage{
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  width: 100%;
+  line-height: 0;
 }
 
-/* IMPORTANT: contain = no zoom / no crop */
 .heroImage img{
   width: 100%;
-  height: 100%;
-  object-fit: contain;      /* <-- no zoom */
-  object-position: center;  /* keep centered */
+  height: auto;          /* keeps natural ratio */
   display: block;
 }
 
+/* Keep overlay and text positioned over image */
 .teamHero__overlay{
   position: absolute;
   inset: 0;
-  z-index: 1;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.18),
+    rgba(0,0,0,0.25),
     rgba(0,0,0,0.55)
   );
 }
 
 .teamHero__content{
-  position: relative;
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
   z-index: 2;
   color: #fff;
-  padding: 46px 0;
-  width: min(var(--container), calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.teamHero__content h1{
-  margin: 0 0 10px;
-  font-size: clamp(1.9rem, 4vw, 3.2rem);
-  line-height: 1.1;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-
-.teamHero__content p{
-  margin: 0;
-  font-size: 1.1rem;
-  opacity: 0.92;
-  max-width: 60ch;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
 /* ---------- PAGE CONTENT ---------- */
