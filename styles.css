@@ -1,9 +1,10 @@
 /* =========================================================
-   Samariterverein – styles.css (UPDATED)
+   Samariterverein – styles.css (REWRITTEN + LINKS PAGE)
    - supports .slide.active AND .slide.is-active
    - adds image sections: .imageSection / .aboutImage / .galleryPreview
    - improves accessibility: focus-visible states
    - adds reduced-motion support
+   - adds pretty Links page cards (.linksGrid / .linkGroup / .linkItem ...)
    ========================================================= */
 
 /* ---------- THEME ---------- */
@@ -58,7 +59,9 @@ body{
   margin: 0 auto;
 }
 
-/* ---------- HEADER ---------- */
+/* =========================================================
+   HEADER
+   ========================================================= */
 .header{
   position: sticky;
   top: 0;
@@ -94,7 +97,9 @@ body{
   background: transparent;
 }
 
-/* ---------- NAV ---------- */
+/* =========================================================
+   NAV
+   ========================================================= */
 .nav{
   display: flex;
   flex-wrap: wrap;
@@ -128,7 +133,9 @@ body{
   border-color: rgba(212,0,0,0.22);
 }
 
-/* ---------- HERO (HOME SLIDESHOW) ---------- */
+/* =========================================================
+   HERO (HOME SLIDESHOW)
+   ========================================================= */
 .teamHero{
   position: relative;
   min-height: 440px;
@@ -202,7 +209,9 @@ body{
   text-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
-/* ---------- IMAGE SECTIONS (NEW) ---------- */
+/* =========================================================
+   IMAGE SECTIONS
+   ========================================================= */
 .imageSection{
   padding: 60px 0;
   background: #f5f5f5;
@@ -250,7 +259,9 @@ body{
   margin-top: 26px;
 }
 
-/* ---------- PAGE CONTENT ---------- */
+/* =========================================================
+   PAGE CONTENT
+   ========================================================= */
 .pageContent{ padding: 40px 0 64px; }
 main.pageContent{ display: block; }
 
@@ -277,7 +288,9 @@ main.pageContent{ display: block; }
   font-size: 0.95rem;
 }
 
-/* ---------- INFO GRID (HOME "Über uns") ---------- */
+/* =========================================================
+   INFO GRID (HOME "Über uns")
+   ========================================================= */
 .infoGrid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -335,6 +348,120 @@ main.pageContent{ display: block; }
   border-radius: var(--radius);
   box-shadow: var(--shadowSm);
   padding: 16px;
+}
+
+/* =========================================================
+   LINKS PAGE (NEW)
+   ========================================================= */
+.linksGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.linkGroup{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadowSm);
+  overflow: hidden;
+}
+
+.linkGroup__head{
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--accentSoft), rgba(255,255,255,0));
+}
+
+.linkGroup__head h2{
+  margin: 0;
+  color: var(--text);
+  font-size: 1.25rem;
+}
+
+.linkList{
+  display: grid;
+  gap: 10px;
+  padding: 14px 14px 16px;
+}
+
+.linkItem{
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px;
+  border-radius: var(--radiusSm);
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.05);
+
+  transition: transform 140ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.linkIcon{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--accentSoft);
+  border: 1px solid rgba(212,0,0,0.18);
+  font-size: 20px;
+}
+
+.linkText{ min-width: 0; }
+
+.linkTitle{
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: .15px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.linkUrl{
+  margin-top: 2px;
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 0.95rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.linkArrow{
+  font-weight: 950;
+  color: rgba(0,0,0,0.55);
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.7);
+}
+
+/* Row hover + arrow accent */
+@media (hover:hover){
+  .linkItem:hover{
+    border-color: rgba(212,0,0,0.18);
+    background: rgba(212,0,0,0.06);
+    transform: translateY(-1px);
+  }
+  .linkItem:hover .linkArrow{
+    color: var(--accent);
+    border-color: rgba(212,0,0,0.22);
+    background: rgba(212,0,0,0.08);
+  }
+}
+
+/* Make the row focus feel deliberate */
+.linkItem:focus-visible{
+  outline: 3px solid rgba(212,0,0,0.35);
+  outline-offset: 3px;
+  border-radius: var(--radiusSm);
 }
 
 /* =========================================================
@@ -1013,7 +1140,7 @@ main.pageContent{ display: block; }
 .muted{ color: var(--muted); }
 
 /* =========================================================
-   REDUCED MOTION (NEW)
+   REDUCED MOTION
    ========================================================= */
 @media (prefers-reduced-motion: reduce){
   .slide{
@@ -1026,8 +1153,10 @@ main.pageContent{ display: block; }
   }
   .navBtn,
   .btn,
-  .galleryItem img{
+  .galleryItem img,
+  .linkItem{
     transition: none;
+    transform: none;
   }
 }
 
@@ -1048,6 +1177,9 @@ main.pageContent{ display: block; }
   .contentGrid{ grid-template-columns: 1fr; }
   .programRow{ grid-template-columns: 1fr; gap: 6px; }
   .programWhere{ opacity: .85; }
+
+  /* Links page: stack groups */
+  .linksGrid{ grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px){
