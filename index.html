@@ -7,132 +7,138 @@
 
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="container headerRow">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container headerRow">
+      <div class="logoBox">
+        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img" />
+      </div>
 
-    <div class="logoBox">
-      <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img" />
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a class="navBtn isActive" href="index.html">Home</a>
+        <a class="navBtn" href="vorstand.html">Vorstand</a>
+        <a class="navBtn" href="kontakt.html">Kontakt</a>
+        <a class="navBtn" href="kurse.html">Kurse</a>
+        <a class="navBtn" href="jungsamariter.html">Jungsamariter</a>
+        <a class="navBtn" href="links.html">Links</a>
+        <a class="navBtn" href="jahresprogramm.html">Jahresprogramm</a>
+        <a class="navBtn" href="galerie.html">Galerie</a>
+      </nav>
     </div>
+  </header>
 
-    <nav class="nav">
-      <a class="navBtn isActive" href="index.html">Home</a>
-      <a class="navBtn" href="vorstand.html">Vorstand</a>
-      <a class="navBtn" href="kontakt.html">Kontakt</a>
-      <a class="navBtn" href="kurse.html">Kurse</a>
-      <a class="navBtn" href="jungsamariter.html">Jungsamariter</a>
-      <a class="navBtn" href="links.html">Links</a>
-      <a class="navBtn" href="jahresprogramm.html">Jahresprogramm</a>
-      <a class="navBtn" href="galerie.html">Galerie</a>
-    </nav>
+  <main>
 
-  </div>
-</header>
-
-<main>
-
-<!-- HERO WITH SLIDESHOW -->
-<section class="teamHero">
-
-  <div class="slideshow" id="slideshow">
-    <img src="images/triangolo.jpg" alt="" class="slide active">
-    <img src="images/samariter_leute_hinten.jpg" alt="" class="slide">
-    <img src="images/samariter_rucksack.jpg" alt="" class="slide">
-  </div>
-
-  <div class="teamHero__overlay"></div>
-
-  <div class="teamHero__content">
-    <h1>Samariterverein Sils im Domleschg</h1>
-    <p>Helfen, Unterstützen, Bilden</p>
-  </div>
-
-</section>
-
-<!-- ÜBER UNS -->
-<section class="pageContent">
-  <div class="pageContainer">
-
-    <h1>Über uns</h1>
-    <p class="introText">Kurz & übersichtlich: Wer wir sind und was wir machen.</p>
-
-    <div class="infoGrid">
-
-      <div class="infoCard">
-        <div class="infoIcon">📅</div>
-        <h3>Gegründet</h3>
-        <p>1941</p>
+    <!-- HERO WITH SLIDESHOW -->
+    <section class="teamHero" aria-label="Startbereich">
+      <div class="slideshow" id="slideshow" aria-label="Bilder Slideshow">
+        <img src="images/triangolo.jpg" alt="Triangolo in der Region" class="slide is-active">
+        <img src="images/samariter_leute_hinten.jpg" alt="Samaritergruppe" class="slide">
+        <img src="images/samariter_rucksack.jpg" alt="Samariter Rucksack" class="slide">
       </div>
 
-      <div class="infoCard">
-        <div class="infoIcon">👥</div>
-        <h3>Mitglieder</h3>
-        <p>15 Aktivmitglieder<br><span class="smallMuted">(bunt gemischt)</span></p>
+      <div class="teamHero__overlay" aria-hidden="true"></div>
+
+      <div class="teamHero__content">
+        <h1>Samariterverein Sils im Domleschg</h1>
+        <p>Helfen, Unterstützen, Bilden</p>
       </div>
+    </section>
 
-      <div class="infoCard">
-        <div class="infoIcon">🏛️</div>
-        <h3>Übungen</h3>
-        <p>1× pro Monat<br><span class="smallMuted">Palazzo Gartensaal</span></p>
+    <!-- ÜBER UNS -->
+    <section class="pageContent" aria-labelledby="about-title">
+      <div class="pageContainer">
+        <h2 id="about-title">Über uns</h2>
+        <p class="introText">Kurz &amp; übersichtlich: Wer wir sind und was wir machen.</p>
+
+        <div class="infoGrid">
+          <article class="infoCard">
+            <div class="infoIcon" aria-hidden="true">📅</div>
+            <h3>Gegründet</h3>
+            <p>1941</p>
+          </article>
+
+          <article class="infoCard">
+            <div class="infoIcon" aria-hidden="true">👥</div>
+            <h3>Mitglieder</h3>
+            <p>15 Aktivmitglieder<br><span class="smallMuted">(bunt gemischt)</span></p>
+          </article>
+
+          <article class="infoCard">
+            <div class="infoIcon" aria-hidden="true">🏛️</div>
+            <h3>Übungen</h3>
+            <p>1× pro Monat<br><span class="smallMuted">Palazzo Gartensaal</span></p>
+          </article>
+
+          <article class="infoCard">
+            <div class="infoIcon" aria-hidden="true">🩺</div>
+            <h3>Publikumskurse</h3>
+            <p>
+              Nothelfer<br>
+              CPR / BLS-AED<br>
+              Kurse für Mitarbeiter von Firmen<br>
+              Weitere Erste-Hilfe-Angebote nach Bedarf
+            </p>
+          </article>
+
+          <article class="infoCard">
+            <div class="infoIcon" aria-hidden="true">🎉</div>
+            <h3>Vereinsleben</h3>
+            <p>Vereinsreise<br>Sommerhöck<br>Samiklaus</p>
+          </article>
+
+          <article class="infoCard">
+            <div class="infoIcon" aria-hidden="true">🤝</div>
+            <h3>Reinschauen?</h3>
+            <p>Jederzeit willkommen<br><span class="smallMuted">unverbindlich</span></p>
+          </article>
+
+          <article class="infoCard">
+            <div class="infoIcon" aria-hidden="true">❤️</div>
+            <h3>Warum?</h3>
+            <p>Wissen kann helfen<br>und Leben retten</p>
+          </article>
+
+          <article class="infoCard">
+            <div class="infoIcon" aria-hidden="true">📌</div>
+            <h3>Ort</h3>
+            <p>Sils i.D.<br><span class="smallMuted">Domleschg</span></p>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="infoCard">
-        <div class="infoIcon">🩺</div>
-        <h3>Publikumskurse</h3>
-        <p>Nothelfer<br>CPR / BLS-AED<br>Kurse für Mitarbeiter von Firmen<br>Weitere Erste-Hilfe-Angebote nach Bedarf</p>
-      </div>
+  </main>
 
-      <div class="infoCard">
-        <div class="infoIcon">🎉</div>
-        <h3>Vereinsleben</h3>
-        <p>Vereinsreise<br>Sommerhöck<br>Samiklaus</p>
-      </div>
+  <!-- SLIDESHOW SCRIPT -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const root = document.getElementById("slideshow");
+      if (!root) return;
 
-      <div class="infoCard">
-        <div class="infoIcon">🤝</div>
-        <h3>Reinschauen?</h3>
-        <p>Jederzeit willkommen<br><span class="smallMuted">unverbindlich</span></p>
-      </div>
+      const slides = Array.from(root.querySelectorAll(".slide"));
+      if (slides.length < 2) return;
 
-      <div class="infoCard">
-        <div class="infoIcon">❤️</div>
-        <h3>Warum?</h3>
-        <p>Wissen kann helfen<br>und Leben retten</p>
-      </div>
+      let currentIndex = slides.findIndex(s => s.classList.contains("is-active"));
+      if (currentIndex < 0) currentIndex = 0;
 
-      <div class="infoCard">
-        <div class="infoIcon">📌</div>
-        <h3>Ort</h3>
-        <p>Sils i.D.<br><span class="smallMuted">Domleschg</span></p>
-      </div>
+      const setActive = (nextIndex) => {
+        slides[currentIndex].classList.remove("is-active");
+        slides[nextIndex].classList.add("is-active");
+        currentIndex = nextIndex;
+      };
 
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<!-- SLIDESHOW SCRIPT -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".slide");
-  if (!slides.length) return;
-
-  let current = 0;
-
-  setInterval(() => {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
-  }, 5000);
-});
-</script>
+      const intervalMs = 5000;
+      setInterval(() => {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        setActive(nextIndex);
+      }, intervalMs);
+    });
+  </script>
 
 </body>
 </html>
