@@ -1,7 +1,9 @@
 /* =========================================================
-   Samariterverein – styles.css
-   Unified theme for: Home, Vorstand, Kurse, Jungsamariter, Jahresprogramm, Galerie
-   Compatibility: headerRow + header__inner, isActive + active
+   Samariterverein – styles.css (UPDATED)
+   - supports .slide.active AND .slide.is-active
+   - adds image sections: .imageSection / .aboutImage / .galleryPreview
+   - improves accessibility: focus-visible states
+   - adds reduced-motion support
    ========================================================= */
 
 /* ---------- THEME ---------- */
@@ -39,6 +41,14 @@ body{
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+}
+
+/* Better keyboard focus */
+:focus{ outline: none; }
+:focus-visible{
+  outline: 3px solid rgba(212,0,0,0.35);
+  outline-offset: 3px;
+  border-radius: 10px;
 }
 
 /* ---------- LAYOUT HELPERS ---------- */
@@ -139,19 +149,20 @@ body{
   height: 100%;
   object-fit: cover;
 
-  /* NEW: Bild weiter oben ausrichten */
+  /* Bild weiter oben ausrichten */
   object-position: center 20%;
 
-  /* Optional: leichter Zoom für moderneren Effekt */
+  /* leichter Zoom für moderneren Effekt */
   transform: scale(1.05);
 
   opacity: 0;
   transition: opacity 900ms ease, transform 6s ease;
-
   will-change: opacity, transform;
 }
 
-.slide.active{
+/* Support BOTH class names used by JS/HTML */
+.slide.active,
+.slide.is-active{
   opacity: 1;
   transform: scale(1.1);
 }
@@ -189,6 +200,54 @@ body{
   opacity: 0.92;
   max-width: 60ch;
   text-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* ---------- IMAGE SECTIONS (NEW) ---------- */
+.imageSection{
+  padding: 60px 0;
+  background: #f5f5f5;
+}
+
+.imageContainer{
+  width: min(var(--container), calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.imageContainer img{
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+/* image inside "Über uns" */
+.aboutImage{
+  margin: 40px 0;
+  text-align: center;
+}
+
+.aboutImage img{
+  width: 100%;
+  max-width: 860px;
+  border-radius: 14px;
+  box-shadow: var(--shadowSm);
+  border: 1px solid var(--line);
+}
+
+/* gallery teaser section (optional for Home) */
+.galleryPreview{
+  padding: 80px 0;
+  background: #fff;
+}
+
+.galleryPreview h2{
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.15;
+}
+
+.galleryPreview .galleryGrid{
+  margin-top: 26px;
 }
 
 /* ---------- PAGE CONTENT ---------- */
@@ -336,7 +395,7 @@ main.pageContent{ display: block; }
 
 .heroGrid{
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1.2fr; /* UPDATED: add image column */
+  grid-template-columns: 1.3fr 1fr 1.2fr;
   gap: 16px;
   align-items: stretch;
 }
@@ -380,7 +439,7 @@ main.pageContent{ display: block; }
   color: var(--muted);
 }
 
-/* NEW: Kurse hero image */
+/* Kurse hero image */
 .heroImage{
   border-radius: var(--radius);
   overflow: hidden;
@@ -954,6 +1013,25 @@ main.pageContent{ display: block; }
 .muted{ color: var(--muted); }
 
 /* =========================================================
+   REDUCED MOTION (NEW)
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  .slide{
+    transition: none;
+    transform: none;
+  }
+  .slide.active,
+  .slide.is-active{
+    transform: none;
+  }
+  .navBtn,
+  .btn,
+  .galleryItem img{
+    transition: none;
+  }
+}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1000px){
@@ -966,10 +1044,7 @@ main.pageContent{ display: block; }
 
 @media (max-width: 900px){
   .heroGrid{ grid-template-columns: 1fr; }
-
-  /* NEW: show hero image first on mobile */
   .heroImage{ order: -1; }
-
   .contentGrid{ grid-template-columns: 1fr; }
   .programRow{ grid-template-columns: 1fr; gap: 6px; }
   .programWhere{ opacity: .85; }
