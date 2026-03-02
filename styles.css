@@ -1213,6 +1213,69 @@ main.pageContent{ display: block; }
   .teamHero__content h1{ font-size: 2rem; }
   :root{ --logoH: 70px; --logoMaxW: 230px; }
 
+/* =========================================================
+   KONTAKT PAGE (NEW) – Bild/Box seitlich
+   ========================================================= */
+
+.contactGrid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* links etwas breiter */
+  gap: 16px;
+  align-items: start;
+}
+
+.contactImage{
+  width: 100%;
+  max-width: 340px;   /* verhindert riesiges Portrait */
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadowSm);
+  margin-top: 10px;
+}
+
+/* optional: Adresse etwas ruhiger setzen */
+.addressBox{
+  margin: 0 0 12px;
+  color: rgba(0,0,0,0.78);
+  font-weight: 650;
+}
+
+/* Info rows (falls noch nicht vorhanden) */
+.infoRow{
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radiusSm);
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-top: 10px;
+}
+
+.infoLabel{
+  font-weight: 900;
+  color: var(--text);
+}
+
+.infoValue{
+  color: rgba(0,0,0,0.78);
+  font-weight: 700;
+  overflow-wrap: anywhere; /* lange Mailadresse bricht sauber um */
+}
+
+/* =========================================================
+   KONTAKT – RESPONSIVE
+   ========================================================= */
+@media (max-width: 900px){
+  .contactGrid{
+    grid-template-columns: 1fr; /* untereinander auf Mobile */
+  }
+  .contactImage{
+    max-width: 420px; /* darf etwas größer werden, wenn 1-spaltig */
+  }
+}
+
   .nav{ justify-content: flex-start; }
   .footerRow{ flex-direction: column; align-items: flex-start; }
 }
