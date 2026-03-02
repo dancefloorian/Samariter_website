@@ -1,115 +1,105 @@
 <!doctype html>
 <html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kurse | Samariterverein</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kurse | Samariterverein</title>
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-</head>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
 
-<body>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container headerRow">
+        <a class="logoBox" href="index.html" aria-label="Zur Startseite">
+          <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img" />
+        </a>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container headerRow">
-      <div class="logoBox">
-        <img src="logo.jpeg" alt="Samariter Logo" class="logoBox__img" />
+        <nav class="nav" aria-label="Hauptnavigation">
+          <a class="navBtn" href="index.html">Home</a>
+          <a class="navBtn" href="vorstand.html">Vorstand</a>
+          <a class="navBtn" href="kontakt.html">Kontakt</a>
+          <a class="navBtn isActive" href="kurse.html" aria-current="page">Kurse</a>
+          <a class="navBtn" href="jungsamariter.html">Jungsamariter</a>
+          <a class="navBtn" href="links.html">Links</a>
+          <a class="navBtn" href="jahresprogramm.html">Jahresprogramm</a>
+          <a class="navBtn" href="galerie.html">Galerie</a>
+        </nav>
       </div>
+    </header>
 
-      <nav class="nav">
-        <a class="navBtn" href="index.html">Home</a>
-        <a class="navBtn" href="vorstand.html">Vorstand</a>
-        <a class="navBtn" href="kontakt.html">Kontakt</a>
-        <a class="navBtn isActive" href="kurse.html">Kurse</a>
-        <a class="navBtn" href="jungsamariter.html">Jungsamariter</a>
-        <a class="navBtn" href="links.html">Links</a>
-        <a class="navBtn" href="jahresprogramm.html">Jahresprogramm</a>
-        <a class="navBtn" href="galerie.html">Galerie</a>
-      </nav>
-    </div>
-  </header>
+    <!-- MAIN -->
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container heroGrid">
+          <div class="heroText">
+            <h1>Kurse</h1>
+            <p class="lead">
+              Lernen Sie, in Notfällen sicher zu handeln – kompakt, verständlich und praxisnah.
+            </p>
 
-  <!-- MAIN -->
-  <main>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container heroGrid">
-
-        <div class="heroText">
-          <h1>Kurse</h1>
-          <p class="lead">
-            Lernen Sie, in Notfällen sicher zu handeln – kompakt, verständlich und praxisnah.
-          </p>
-
-          <div class="heroActions">
-            <a class="btn btnPrimary" href="#angebote">Angebote ansehen</a>
-            <a class="btn btnGhost" href="kontakt.html">Kontakt</a>
-          </div>
-        </div>
-
-        <div class="heroCard">
-          <h2>Gut vorbereitet sein</h2>
-          <p>
-            Wir vermitteln verständlich und praxisnah, was in Notfällen wirklich zählt – vom schnellen
-            Überblick bis zur sicheren Anwendung.
-          </p>
-          <ul class="checkList">
-            <li>Praxisorientiert</li>
-            <li>Kurze Kursdauer</li>
-            <li>Für Alltag & Familie</li>
-          </ul>
-        </div>
-        
-        
-      </div>
-    </section>
-
-    <!-- CONTENT -->
-    <section id="angebote" class="section">
-      <div class="container">
-
-        <div class="sectionHeader">
-          <h2>Unsere Angebote</h2>
-          <p>Übersicht über unsere Publikumskurse und geplanten Termine.</p>
-        </div>
-
-        <!-- Publikumskurse -->
-        <div class="scheduleCard">
-          <h3 class="scheduleTitle">Publikumskurse</h3>
-
-          <ul class="prettyList">
-            <li>Nothelfer</li>
-            <li>CPR / BLS-AED</li>
-            <li>Kurse für Mitarbeiter von Firmen</li>
-            <li>Weitere Erste-Hilfe-Angebote nach Bedarf</li>
-          </ul>
-        </div>
-
-        <!-- Kurswesen 2026 -->
-        <div class="scheduleCard">
-          <h4 class="scheduleTitle">Zurzeit sind keine öffentlichen Kurse geplant</h4>
+            <div class="heroActions">
+              <a class="btn btnPrimary" href="#angebote">Angebote ansehen</a>
+              <a class="btn btnGhost" href="kontakt.html">Kontakt</a>
+            </div>
           </div>
 
-          <div style="margin-top:14px;">
-            <a class="btn btnGhost" href="kontakt.html">Anfrage / Anmeldung</a>
-          </div>
+          <aside class="heroCard" aria-label="Kurzinfo">
+            <h2>Gut vorbereitet sein</h2>
+            <p>
+              Wir vermitteln verständlich und praxisnah, was in Notfällen wirklich zählt – vom schnellen
+              Überblick bis zur sicheren Anwendung.
+            </p>
+            <ul class="checkList">
+              <li>Praxisorientiert</li>
+              <li>Kurze Kursdauer</li>
+              <li>Für Alltag &amp; Familie</li>
+            </ul>
+          </aside>
         </div>
+      </section>
 
+      <!-- CONTENT -->
+      <section id="angebote" class="section">
+        <div class="container">
+          <header class="sectionHeader">
+            <h2>Unsere Angebote</h2>
+            <p>Übersicht über unsere Publikumskurse und geplanten Termine.</p>
+          </header>
+
+          <!-- Publikumskurse -->
+          <article class="scheduleCard">
+            <h3 class="scheduleTitle">Publikumskurse</h3>
+            <ul class="prettyList">
+              <li>Nothelfer</li>
+              <li>CPR / BLS-AED</li>
+              <li>Kurse für Mitarbeiter von Firmen</li>
+              <li>Weitere Erste-Hilfe-Angebote nach Bedarf</li>
+            </ul>
+          </article>
+
+          <!-- Status / Termine -->
+          <article class="scheduleCard">
+            <h3 class="scheduleTitle">Termine</h3>
+            <p>Zurzeit sind keine öffentlichen Kurse geplant.</p>
+
+            <div class="sectionActions">
+              <a class="btn btnGhost" href="kontakt.html">Anfrage / Anmeldung</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footerRow">
+        <p>© Samariterverein</p>
+        <p class="muted">Gemeinsam helfen – sicher handeln.</p>
       </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footerRow">
-      <p>© Samariterverein</p>
-      <p class="muted">Gemeinsam helfen – sicher handeln.</p>
-    </div>
-  </footer>
-
-</body>
+    </footer>
+  </body>
 </html>
