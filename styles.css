@@ -1,10 +1,11 @@
 /* =========================================================
-   Samariterverein – styles.css (REWRITTEN + LINKS PAGE)
-   - supports .slide.active AND .slide.is-active
-   - adds image sections: .imageSection / .aboutImage / .galleryPreview
-   - improves accessibility: focus-visible states
-   - adds reduced-motion support
-   - adds pretty Links page cards (.linksGrid / .linkGroup / .linkItem ...)
+   Samariterverein – styles.css (UPDATED / CLEANED)
+   - fixes broken braces / media-query nesting
+   - keeps support for .slide.active AND .slide.is-active
+   - keeps Links page cards (.linksGrid / .linkGroup / .linkItem)
+   - adds optional page header image (.pageHeader / .pageImage)
+   - improves accessibility (focus-visible) + reduced-motion
+   - Kontakt page grid moved OUT of @media blocks (was broken)
    ========================================================= */
 
 /* ---------- THEME ---------- */
@@ -242,6 +243,23 @@ body{
   border: 1px solid var(--line);
 }
 
+/* optional page header image (e.g. Links page) */
+.pageHeader{ margin-bottom: 14px; }
+
+.pageImage{
+  margin: 16px 0 6px;
+  text-align: center;
+}
+
+.pageImage img{
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadowSm);
+}
+
 /* gallery teaser section (optional for Home) */
 .galleryPreview{
   padding: 80px 0;
@@ -351,7 +369,7 @@ main.pageContent{ display: block; }
 }
 
 /* =========================================================
-   LINKS PAGE (NEW)
+   LINKS PAGE
    ========================================================= */
 .linksGrid{
   display: grid;
@@ -443,7 +461,6 @@ main.pageContent{ display: block; }
   background: rgba(255,255,255,0.7);
 }
 
-/* Row hover + arrow accent */
 @media (hover:hover){
   .linkItem:hover{
     border-color: rgba(212,0,0,0.18);
@@ -457,7 +474,6 @@ main.pageContent{ display: block; }
   }
 }
 
-/* Make the row focus feel deliberate */
 .linkItem:focus-visible{
   outline: 3px solid rgba(212,0,0,0.35);
   outline-offset: 3px;
@@ -1122,6 +1138,54 @@ main.pageContent{ display: block; }
 .lightboxClose:hover{ background: rgba(255,255,255,0.16); }
 
 /* =========================================================
+   KONTAKT PAGE – Bild/Box seitlich (FIXED)
+   ========================================================= */
+.contactGrid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* links etwas breiter */
+  gap: 16px;
+  align-items: start;
+}
+
+.contactImage{
+  width: 100%;
+  max-width: 340px;   /* verhindert riesiges Portrait */
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadowSm);
+  margin-top: 10px;
+}
+
+.addressBox{
+  margin: 0 0 12px;
+  color: rgba(0,0,0,0.78);
+  font-weight: 650;
+}
+
+.infoRow{
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radiusSm);
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-top: 10px;
+}
+
+.infoLabel{
+  font-weight: 900;
+  color: var(--text);
+}
+
+.infoValue{
+  color: rgba(0,0,0,0.78);
+  font-weight: 700;
+  overflow-wrap: anywhere; /* lange Mailadresse bricht sauber um */
+}
+
+/* =========================================================
    FOOTER
    ========================================================= */
 .footer{
@@ -1180,6 +1244,10 @@ main.pageContent{ display: block; }
 
   /* Links page: stack groups */
   .linksGrid{ grid-template-columns: 1fr; }
+
+  /* Kontakt page: stack */
+  .contactGrid{ grid-template-columns: 1fr; }
+  .contactImage{ max-width: 420px; }
 }
 
 @media (max-width: 720px){
@@ -1212,69 +1280,6 @@ main.pageContent{ display: block; }
 
   .teamHero__content h1{ font-size: 2rem; }
   :root{ --logoH: 70px; --logoMaxW: 230px; }
-
-/* =========================================================
-   KONTAKT PAGE (NEW) – Bild/Box seitlich
-   ========================================================= */
-
-.contactGrid{
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr; /* links etwas breiter */
-  gap: 16px;
-  align-items: start;
-}
-
-.contactImage{
-  width: 100%;
-  max-width: 340px;   /* verhindert riesiges Portrait */
-  height: auto;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadowSm);
-  margin-top: 10px;
-}
-
-/* optional: Adresse etwas ruhiger setzen */
-.addressBox{
-  margin: 0 0 12px;
-  color: rgba(0,0,0,0.78);
-  font-weight: 650;
-}
-
-/* Info rows (falls noch nicht vorhanden) */
-.infoRow{
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: var(--radiusSm);
-  background: rgba(0,0,0,0.03);
-  border: 1px solid rgba(0,0,0,0.05);
-  margin-top: 10px;
-}
-
-.infoLabel{
-  font-weight: 900;
-  color: var(--text);
-}
-
-.infoValue{
-  color: rgba(0,0,0,0.78);
-  font-weight: 700;
-  overflow-wrap: anywhere; /* lange Mailadresse bricht sauber um */
-}
-
-/* =========================================================
-   KONTAKT – RESPONSIVE
-   ========================================================= */
-@media (max-width: 900px){
-  .contactGrid{
-    grid-template-columns: 1fr; /* untereinander auf Mobile */
-  }
-  .contactImage{
-    max-width: 420px; /* darf etwas größer werden, wenn 1-spaltig */
-  }
-}
 
   .nav{ justify-content: flex-start; }
   .footerRow{ flex-direction: column; align-items: flex-start; }
