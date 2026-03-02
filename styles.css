@@ -243,7 +243,9 @@ body{
   border: 1px solid var(--line);
 }
 
-/* optional page header image (e.g. Links page) */
+/* =========================================================
+   PAGE HEADER IMAGE (Variante 1 – Links page)
+   ========================================================= */
 .pageHeader{ margin-bottom: 14px; }
 
 .pageImage{
@@ -251,16 +253,34 @@ body{
   text-align: center;
 }
 
+/* Updated: consistent "banner-like" look without forcing a fixed height */
 .pageImage img{
   width: 100%;
   max-width: 980px;
   height: auto;
+
   border-radius: 14px;
   border: 1px solid var(--line);
   box-shadow: var(--shadowSm);
+
+  /* nice rendering on different screens */
+  object-fit: cover;
 }
 
-/* gallery teaser section (optional for Home) */
+/*
+  OPTIONAL (uncomment if you want a fixed banner height):
+  This makes the image crop nicely like a header banner.
+*/
+/*
+.pageImage img{
+  height: 260px;
+}
+@media (max-width: 640px){
+  .pageImage img{ height: 200px; }
+}
+*/
+
+ /* gallery teaser section (optional for Home) */
 .galleryPreview{
   padding: 80px 0;
   background: #fff;
