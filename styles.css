@@ -1,11 +1,11 @@
 /* =========================================================
-   Samariterverein – styles.css (UPDATED / CLEANED)
-   - fixes broken braces / media-query nesting
+   Samariterverein – styles.css (REWRITTEN / CLEANED)
+   - consistent structure + fixed braces
    - keeps support for .slide.active AND .slide.is-active
    - keeps Links page cards (.linksGrid / .linkGroup / .linkItem)
-   - adds optional page header image (.pageHeader / .pageImage)
-   - improves accessibility (focus-visible) + reduced-motion
-   - Kontakt page grid moved OUT of @media blocks (was broken)
+   - supports page header image (.pageImage)
+   - NEW: title row with partner logos (.pageHeader + .partnerLogos)
+   - accessibility: focus-visible + reduced motion
    ========================================================= */
 
 /* ---------- THEME ---------- */
@@ -244,60 +244,6 @@ body{
 }
 
 /* =========================================================
-   PAGE HEADER IMAGE (Variante 1 – Links page)
-   ========================================================= */
-.pageHeader{ margin-bottom: 14px; }
-
-.pageImage{
-  margin: 16px 0 6px;
-  text-align: center;
-}
-
-/* Updated: consistent "banner-like" look without forcing a fixed height */
-.pageImage img{
-  width: 100%;
-  max-width: 980px;
-  height: auto;
-
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadowSm);
-
-  /* nice rendering on different screens */
-  object-fit: cover;
-}
-
-/*
-  OPTIONAL (uncomment if you want a fixed banner height):
-  This makes the image crop nicely like a header banner.
-*/
-/*
-.pageImage img{
-  height: 260px;
-}
-@media (max-width: 640px){
-  .pageImage img{ height: 200px; }
-}
-*/
-
- /* gallery teaser section (optional for Home) */
-.galleryPreview{
-  padding: 80px 0;
-  background: #fff;
-}
-
-.galleryPreview h2{
-  margin: 0 0 10px;
-  color: var(--accent);
-  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-  line-height: 1.15;
-}
-
-.galleryPreview .galleryGrid{
-  margin-top: 26px;
-}
-
-/* =========================================================
    PAGE CONTENT
    ========================================================= */
 .pageContent{ padding: 40px 0 64px; }
@@ -325,6 +271,83 @@ main.pageContent{ display: block; }
   font-weight: 650;
   font-size: 0.95rem;
 }
+
+/* =========================================================
+   PAGE HEADER (title row + optional partner logos)
+   Use in HTML:
+   <div class="pageHeader">
+     <h1>...</h1>
+     <div class="partnerLogos"><img ...><img ...></div>
+   </div>
+   ========================================================= */
+.pageHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.pageHeader h1,
+.pageHeader h2{
+  margin: 0;
+}
+
+/* Partner logos (right side of title) */
+.partnerLogos{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.partnerLogos img{
+  height: 70px; /* adjust as needed */
+  width: auto;
+  object-fit: contain;
+}
+
+/* =========================================================
+   PAGE HEADER IMAGE (e.g. Links page)
+   ========================================================= */
+.pageImage{
+  margin: 16px 0 6px;
+  text-align: center;
+}
+
+/* banner-like look without fixed height */
+.pageImage img{
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadowSm);
+  object-fit: cover;
+}
+
+/*
+  OPTIONAL fixed banner crop:
+.pageImage img{ height: 260px; }
+@media (max-width: 640px){ .pageImage img{ height: 200px; } }
+*/
+
+/* gallery teaser section (optional for Home) */
+.galleryPreview{
+  padding: 80px 0;
+  background: #fff;
+}
+
+.galleryPreview h2{
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.15;
+}
+
+.galleryPreview .galleryGrid{ margin-top: 26px; }
 
 /* =========================================================
    INFO GRID (HOME "Über uns")
@@ -455,7 +478,6 @@ main.pageContent{ display: block; }
   font-weight: 900;
   color: var(--text);
   letter-spacing: .15px;
-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -466,7 +488,6 @@ main.pageContent{ display: block; }
   color: var(--muted);
   font-weight: 650;
   font-size: 0.95rem;
-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1158,18 +1179,18 @@ main.pageContent{ display: block; }
 .lightboxClose:hover{ background: rgba(255,255,255,0.16); }
 
 /* =========================================================
-   KONTAKT PAGE – Bild/Box seitlich (FIXED)
+   KONTAKT PAGE – Bild/Box seitlich
    ========================================================= */
 .contactGrid{
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr; /* links etwas breiter */
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 16px;
   align-items: start;
 }
 
 .contactImage{
   width: 100%;
-  max-width: 340px;   /* verhindert riesiges Portrait */
+  max-width: 340px;
   height: auto;
   border-radius: 14px;
   border: 1px solid var(--line);
@@ -1202,7 +1223,7 @@ main.pageContent{ display: block; }
 .infoValue{
   color: rgba(0,0,0,0.78);
   font-weight: 700;
-  overflow-wrap: anywhere; /* lange Mailadresse bricht sauber um */
+  overflow-wrap: anywhere;
 }
 
 /* =========================================================
@@ -1258,14 +1279,13 @@ main.pageContent{ display: block; }
 @media (max-width: 900px){
   .heroGrid{ grid-template-columns: 1fr; }
   .heroImage{ order: -1; }
+
   .contentGrid{ grid-template-columns: 1fr; }
   .programRow{ grid-template-columns: 1fr; gap: 6px; }
   .programWhere{ opacity: .85; }
 
-  /* Links page: stack groups */
   .linksGrid{ grid-template-columns: 1fr; }
 
-  /* Kontakt page: stack */
   .contactGrid{ grid-template-columns: 1fr; }
   .contactImage{ max-width: 420px; }
 }
@@ -1275,6 +1295,17 @@ main.pageContent{ display: block; }
   .timeline::before{ left: 22px; }
   .eventCard{ padding-left: 46px; }
   .eventCard::before{ left: 15px; }
+
+  .pageHeader{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .partnerLogos{
+    justify-content: flex-start;
+  }
+  .partnerLogos img{
+    height: 56px;
+  }
 }
 
 @media (max-width: 640px){
