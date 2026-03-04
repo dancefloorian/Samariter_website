@@ -1,11 +1,11 @@
 /* =========================================================
-   Samariterverein – styles.css (REWRITTEN / CLEANED)
-   - consistent structure + fixed braces
-   - keeps support for .slide.active AND .slide.is-active
+   Samariterverein – styles.css (REWRITTEN / BEAUTIFIED)
+   - clean structure + stable responsive behavior
+   - supports .slide.active AND .slide.is-active
    - keeps Links page cards (.linksGrid / .linkGroup / .linkItem)
    - supports page header image (.pageImage)
-   - NEW: title row with partner logos (.pageHeader + .partnerLogos)
-   - accessibility: focus-visible + reduced motion
+   - BEAUTIFUL partner logos next to title (.pageHeader + .partnerLogos + .logoBadge)
+   - accessibility: focus-visible + reduced-motion
    ========================================================= */
 
 /* ---------- THEME ---------- */
@@ -156,19 +156,13 @@ body{
   width: 100%;
   height: 100%;
   object-fit: cover;
-
-  /* Bild weiter oben ausrichten */
   object-position: center 20%;
-
-  /* leichter Zoom für moderneren Effekt */
   transform: scale(1.05);
-
   opacity: 0;
   transition: opacity 900ms ease, transform 6s ease;
   will-change: opacity, transform;
 }
 
-/* Support BOTH class names used by JS/HTML */
 .slide.active,
 .slide.is-active{
   opacity: 1;
@@ -229,7 +223,6 @@ body{
   box-shadow: var(--shadow);
 }
 
-/* image inside "Über uns" */
 .aboutImage{
   margin: 40px 0;
   text-align: center;
@@ -273,39 +266,65 @@ main.pageContent{ display: block; }
 }
 
 /* =========================================================
-   PAGE HEADER (title row + optional partner logos)
-   Use in HTML:
+   PAGE HEADER (title row + BEAUTIFUL partner logos)
+   HTML example:
    <div class="pageHeader">
      <h1>...</h1>
-     <div class="partnerLogos"><img ...><img ...></div>
+     <div class="partnerLogos">
+       <div class="logoBadge"><img ...></div>
+       <div class="logoBadge"><img ...></div>
+     </div>
    </div>
    ========================================================= */
 .pageHeader{
   display: flex;
-  align-items: center;
+  align-items: flex-start;     /* nicer with big H1 */
   justify-content: space-between;
-  gap: 16px;
+  gap: 18px;
   margin-bottom: 14px;
 }
 
 .pageHeader h1,
-.pageHeader h2{
-  margin: 0;
-}
+.pageHeader h2{ margin: 0; }
 
-/* Partner logos (right side of title) */
 .partnerLogos{
   display: flex;
   align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 12px;
   justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 4px; /* optical alignment with H1 */
+}
+
+/* "badge" look for logos (works for <div> or <a>) */
+.partnerLogos .logoBadge,
+.partnerLogos a.logoBadge{
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 72px;
+  padding: 8px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
 }
 
 .partnerLogos img{
-  height: 70px; /* adjust as needed */
-  width: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  display: block;
+}
+
+@media (hover:hover){
+  .partnerLogos .logoBadge:hover,
+  .partnerLogos a.logoBadge:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.09);
+    border-color: rgba(212,0,0,0.18);
+  }
 }
 
 /* =========================================================
@@ -316,25 +335,19 @@ main.pageContent{ display: block; }
   text-align: center;
 }
 
-/* banner-like look without fixed height */
 .pageImage img{
   width: 100%;
   max-width: 980px;
   height: auto;
-
   border-radius: 14px;
   border: 1px solid var(--line);
   box-shadow: var(--shadowSm);
   object-fit: cover;
 }
 
-/*
-  OPTIONAL fixed banner crop:
-.pageImage img{ height: 260px; }
-@media (max-width: 640px){ .pageImage img{ height: 200px; } }
-*/
-
-/* gallery teaser section (optional for Home) */
+/* =========================================================
+   HOME: optional gallery teaser
+   ========================================================= */
 .galleryPreview{
   padding: 80px 0;
   background: #fff;
@@ -623,7 +636,6 @@ main.pageContent{ display: block; }
   color: var(--muted);
 }
 
-/* Kurse hero image */
 .heroImage{
   border-radius: var(--radius);
   overflow: hidden;
@@ -641,7 +653,6 @@ main.pageContent{ display: block; }
   display: block;
 }
 
-/* Check list */
 .checkList{
   list-style: none;
   padding: 0;
@@ -731,7 +742,6 @@ main.pageContent{ display: block; }
 }
 .btnLink:hover{ text-decoration: underline; }
 
-/* Kurse: schedule cards */
 .scheduleCard{
   background: var(--card);
   border: 1px solid var(--line);
@@ -747,7 +757,6 @@ main.pageContent{ display: block; }
   color: var(--text);
 }
 
-/* Pretty checklist list */
 .prettyList{
   margin: 0;
   padding: 0;
@@ -779,7 +788,6 @@ main.pageContent{ display: block; }
   font-weight: 950;
 }
 
-/* Mini schedule */
 .miniSchedule{ display: grid; gap: 10px; }
 
 .miniRow{
@@ -1248,14 +1256,10 @@ main.pageContent{ display: block; }
    REDUCED MOTION
    ========================================================= */
 @media (prefers-reduced-motion: reduce){
-  .slide{
-    transition: none;
-    transform: none;
-  }
+  .slide{ transition: none; transform: none; }
   .slide.active,
-  .slide.is-active{
-    transform: none;
-  }
+  .slide.is-active{ transform: none; }
+
   .navBtn,
   .btn,
   .galleryItem img,
@@ -1300,11 +1304,16 @@ main.pageContent{ display: block; }
     flex-direction: column;
     align-items: flex-start;
   }
+
   .partnerLogos{
     justify-content: flex-start;
   }
-  .partnerLogos img{
-    height: 56px;
+
+  .partnerLogos .logoBadge,
+  .partnerLogos a.logoBadge{
+    width: 78px;
+    height: 62px;
+    border-radius: 14px;
   }
 }
 
